@@ -54,6 +54,7 @@ interface Props {
 	relatedServices: RelatedService[];
 	relatedAudiences: RelatedAudience[];
 	faq: FaqItem[];
+	insightsHub?: string;
 }
 
 const {
@@ -72,6 +73,7 @@ const {
 	relatedServices,
 	relatedAudiences,
 	faq,
+	insightsHub,
 } = Astro.props;
 ---
 
@@ -100,8 +102,18 @@ const {
 						{headline}
 					</h1>
 					<p class="text-body mt-6 text-lg leading-relaxed">{subheadline}</p>
-					<div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+					<div class="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
 						<a href="/contact" class="btn-primary px-7 py-3.5">Book a discovery call</a>
+						{
+							insightsHub && (
+								<a
+									href={insightsHub}
+									class="text-center text-sm font-medium text-body transition-colors hover:text-[#0067FF] dark:hover:text-[#3d8fff] sm:text-left"
+								>
+									Read blog for {eyebrow} →
+								</a>
+							)
+						}
 						<a
 							href="/about"
 							class="text-center text-sm font-medium text-body transition-colors hover:text-[#0067FF] dark:hover:text-[#3d8fff] sm:text-left"

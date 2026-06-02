@@ -3,8 +3,11 @@ title: 'Modern JavaScript Patterns for Production Apps'
 description: 'Practical patterns for React and Next.js teams who need speed today and a codebase that still makes sense in twelve months.'
 pubDate: '2026-01-15'
 updatedDate: '2026-02-10'
-heroImage: '../../assets/blog-placeholder-2.jpg'
-tags: ['JavaScript / TypeScript', 'Next.js / React']
+heroImage: '../../../assets/blog/modern-javascript-patterns.png'
+personas: ['Enterprise Engineering', 'Startup Founders']
+services: ['Product Engineering']
+technologies: ['JavaScript & TypeScript', 'React & Next.js']
+industries: ['Enterprise Software', 'Startups & SaaS']
 ---
 
 JavaScript is no longer a question of whether it can power serious products. The question is whether your codebase stays understandable as the feature list grows. Teams on **React** and **Next.js** win when structure is intentional from the start.

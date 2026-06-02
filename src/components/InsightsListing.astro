@@ -1,0 +1,334 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import InsightCard from './InsightCard.astro';
+
+export interface FilterChip {
+	slug: string;
+	label: string;
+	href: string;
+	dimension: 'persona' | 'service' | 'technology' | 'industry';
+}
+
+interface Props {
+	title: string;
+	description: string;
+	posts: CollectionEntry<'insights'>[];
+	backHref?: string;
+	backLabel?: string;
+	filterChips?: FilterChip[];
+	activeTagSlug?: string;
+	eyebrow?: string;
+	showFeatured?: boolean;
+	/** Items per page when `firstPageSize` is not used, or on page 2+ */
+	postsPerPage?: number;
+	/** Page 1 size only (e.g. main `/blog`: 5 on page 1, `postsPerPage` on later pages) */
+	firstPageSize?: number;
+}
+
+const {
+	title,
+	description,
+	posts,
+	backHref = '/blog',
+	backLabel = 'All articles',
+	filterChips = [],
+	activeTagSlug,
+	eyebrow,
+	showFeatured = false,
+	postsPerPage = 6,
+	firstPageSize,
+} = Astro.props;
+
+const [featuredPost, ...remainingPosts] = showFeatured ? posts : [undefined, ...posts];
+const listPosts = showFeatured ? remainingPosts : posts;
+const showFilters = filterChips.length > 0;
+
+const chipStyles: Record<FilterChip['dimension'], string> = {
+	persona:
+		'border-[#0067FF]/30 hover:border-[#0067FF]/50 hover:bg-[#0067FF]/10 dark:hover:text-[#3d8fff]',
+	service:
+		'border-[#0067FF]/30 hover:border-[#0067FF]/50 hover:bg-[#0067FF]/10 dark:hover:text-[#3d8fff]',
+	technology:
+		'border-emerald-500/30 hover:border-emerald-500/50 hover:bg-emerald-500/10 dark:hover:text-emerald-300',
+	industry:
+		'border-amber-500/30 hover:border-amber-500/50 hover:bg-amber-500/10 dark:hover:text-amber-200',
+};
+
+const activeChipStyles: Record<FilterChip['dimension'], string> = {
+	persona: 'border-[#0067FF] bg-[#0067FF] text-white',
+	service: 'border-[#0067FF] bg-[#0067FF] text-white',
+	technology: 'border-emerald-600 bg-emerald-600 text-white dark:border-emerald-500 dark:bg-emerald-500',
+	industry: 'border-amber-600 bg-amber-600 text-white dark:border-amber-500 dark:bg-amber-500',
+};
+---
+
+<section class="section-padding page-container">
+	{
+		backHref && (
+			<a
+				href={backHref}
+				class="mb-10 inline-flex items-center gap-2 text-sm font-medium text-body transition-colors duration-300 hover:text-[#0067FF] dark:hover:text-[#3d8fff]"
+			>
+				<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+					<path d="M19 12H5M12 19l-7-7 7-7" />
+				</svg>
+				{backLabel}
+			</a>
+		)
+	}
+
+	<div class="mx-auto mb-10 max-w-2xl">
+		{eyebrow && (
+			<p class="text-xs font-semibold uppercase tracking-wider text-[#0067FF] dark:text-[#3d8fff]">{eyebrow}</p>
+		)}
+		<h1 class="font-[family-name:var(--font-display)] text-heading text-4xl font-semibold tracking-tight md:text-5xl">
+			{title}
+		</h1>
+		<p class="text-body mt-5 text-lg leading-relaxed">{description}</p>
+	</div>
+
+	<div class="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+		<label class="relative block w-full sm:max-w-md">
+			<span class="sr-only">Search articles</span>
+			<svg
+				class="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				aria-hidden="true"
+			>
+				<circle cx="11" cy="11" r="7" />
+				<path d="M20 20l-3-3" />
+			</svg>
+			<input
+				type="search"
+				id="insight-search"
+				placeholder="Search by title or summary…"
+				autocomplete="off"
+				class="w-full rounded-full border border-border bg-surface-elevated py-2.5 pl-10 pr-4 text-sm text-foreground placeholder:text-muted focus:border-[#0067FF]/50 focus:outline-none focus:ring-2 focus:ring-[#0067FF]/20"
+			/>
+		</label>
+		<p id="insight-result-count" class="text-sm text-muted" aria-live="polite" />
+	</div>
+
+	{
+		showFilters && (
+			<div class="mb-10 flex flex-wrap gap-2" role="navigation" aria-label="Browse by topic">
+				<a
+					href="/blog/"
+					class:list={[
+						'insight-tag-link shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition-all duration-300',
+						!activeTagSlug
+							? 'border-[#0067FF] bg-[#0067FF] font-semibold text-white'
+							: 'border-border bg-surface-elevated text-muted hover:border-border-strong hover:text-foreground',
+					]}
+				>
+					All
+				</a>
+				{
+					filterChips.map((chip) => (
+						<a
+							href={chip.href}
+							class:list={[
+								'insight-tag-link shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition-all duration-300',
+								activeTagSlug === chip.slug
+									? ['font-semibold', activeChipStyles[chip.dimension]]
+									: ['border-border bg-surface-elevated text-muted', chipStyles[chip.dimension]],
+							]}
+						>
+							{chip.label}
+						</a>
+					))
+				}
+			</div>
+		)
+	}
+
+	<div
+		class="space-y-8"
+		id="insight-posts"
+		data-posts-per-page={postsPerPage}
+		data-first-page-size={firstPageSize ?? ''}
+	>
+		{
+			featuredPost && (
+				<div
+					class="insight-post-item"
+					data-search={featuredPost.data.title + ' ' + featuredPost.data.description}
+				>
+					<InsightCard post={featuredPost} featured />
+				</div>
+			)
+		}
+		{
+			listPosts.length > 0 && (
+				<div class="grid gap-6 md:grid-cols-2" id="insight-post-grid">
+					{listPosts.map((post) => (
+						<div
+							class="insight-post-item"
+							data-search={post.data.title + ' ' + post.data.description}
+						>
+							<InsightCard post={post} />
+						</div>
+					))}
+				</div>
+			)
+		}
+	</div>
+
+	<p id="no-insights-message" class="text-body hidden py-16 text-center">
+		No articles match your search. Try different keywords or browse all topics.
+	</p>
+
+	<nav
+		id="insight-pagination"
+		class="mt-12 hidden items-center justify-center gap-2"
+		aria-label="Article pages"
+	>
+		<button
+			type="button"
+			id="insight-prev"
+			class="rounded-full border border-border bg-surface-elevated px-4 py-2 text-sm font-medium text-muted transition-colors hover:border-border-strong hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40"
+		>
+			Previous
+		</button>
+		<span id="insight-page-label" class="min-w-[6rem] text-center text-sm text-muted" />
+		<button
+			type="button"
+			id="insight-next"
+			class="rounded-full border border-border bg-surface-elevated px-4 py-2 text-sm font-medium text-muted transition-colors hover:border-border-strong hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40"
+		>
+			Next
+		</button>
+	</nav>
+</section>
+
+<script>
+	const SEARCH_DEBOUNCE_MS = 300;
+
+	let listingController: AbortController | undefined;
+	let searchDebounceId: ReturnType<typeof setTimeout> | undefined;
+
+	function setupInsightListing() {
+		listingController?.abort();
+		clearTimeout(searchDebounceId);
+		listingController = new AbortController();
+		const { signal } = listingController;
+
+		const searchInput = document.getElementById('insight-search') as HTMLInputElement | null;
+		const postsRoot = document.getElementById('insight-posts');
+		const items = Array.from(document.querySelectorAll<HTMLElement>('.insight-post-item'));
+		const emptyMessage = document.getElementById('no-insights-message');
+		const resultCount = document.getElementById('insight-result-count');
+		const pagination = document.getElementById('insight-pagination');
+		const prevBtn = document.getElementById('insight-prev') as HTMLButtonElement | null;
+		const nextBtn = document.getElementById('insight-next') as HTMLButtonElement | null;
+		const pageLabel = document.getElementById('insight-page-label');
+
+		if (!postsRoot || !items.length) return;
+
+		const perPage = Number(postsRoot.dataset.postsPerPage) || 6;
+		const firstPageRaw = postsRoot.dataset.firstPageSize;
+		const firstPage = firstPageRaw ? Number(firstPageRaw) : 0;
+		const useSplitPages = firstPage > 0 && firstPage !== perPage;
+
+		let currentPage = 1;
+		let filteredItems = items;
+
+		const normalize = (value: string) => value.toLowerCase().trim();
+
+		const getPageSize = (page: number) => {
+			if (!useSplitPages) return perPage;
+			return page === 1 ? firstPage : perPage;
+		};
+
+		const getStartIndex = (page: number) => {
+			if (!useSplitPages) return (page - 1) * perPage;
+			if (page <= 1) return 0;
+			return firstPage + (page - 2) * perPage;
+		};
+
+		const getTotalPages = (total: number) => {
+			if (total === 0) return 1;
+			if (!useSplitPages) return Math.max(1, Math.ceil(total / perPage));
+			if (total <= firstPage) return 1;
+			return 1 + Math.ceil((total - firstPage) / perPage);
+		};
+
+		const applyFilters = () => {
+			const query = normalize(searchInput?.value ?? '');
+			filteredItems = items.filter((item) => {
+				const haystack = normalize(item.dataset.search ?? '');
+				return !query || haystack.includes(query);
+			});
+
+			const total = filteredItems.length;
+			const totalPages = getTotalPages(total);
+			currentPage = Math.min(currentPage, totalPages);
+
+			items.forEach((item) => item.classList.add('hidden'));
+
+			if (total === 0) {
+				emptyMessage?.classList.remove('hidden');
+				pagination?.classList.add('hidden');
+				resultCount && (resultCount.textContent = '0 articles');
+				return;
+			}
+
+			emptyMessage?.classList.add('hidden');
+			const start = getStartIndex(currentPage);
+			const pageItems = filteredItems.slice(start, start + getPageSize(currentPage));
+			pageItems.forEach((item) => item.classList.remove('hidden'));
+
+			resultCount &&
+				(resultCount.textContent =
+					query ? `${total} matching article${total === 1 ? '' : 's'}` : `${total} article${total === 1 ? '' : 's'}`);
+
+			if (totalPages > 1) {
+				pagination?.classList.remove('hidden');
+				pageLabel && (pageLabel.textContent = `Page ${currentPage} of ${totalPages}`);
+				prevBtn && (prevBtn.disabled = currentPage <= 1);
+				nextBtn && (nextBtn.disabled = currentPage >= totalPages);
+			} else {
+				pagination?.classList.add('hidden');
+			}
+		};
+
+		searchInput?.addEventListener(
+			'input',
+			() => {
+				currentPage = 1;
+				clearTimeout(searchDebounceId);
+				searchDebounceId = setTimeout(applyFilters, SEARCH_DEBOUNCE_MS);
+			},
+			{ signal },
+		);
+
+		prevBtn?.addEventListener(
+			'click',
+			() => {
+				currentPage = Math.max(1, currentPage - 1);
+				applyFilters();
+				postsRoot.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			},
+			{ signal },
+		);
+
+		nextBtn?.addEventListener(
+			'click',
+			() => {
+				const totalPages = getTotalPages(filteredItems.length);
+				currentPage = Math.min(totalPages, currentPage + 1);
+				applyFilters();
+				postsRoot.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			},
+			{ signal },
+		);
+
+		applyFilters();
+	}
+
+	setupInsightListing();
+	document.addEventListener('astro:page-load', setupInsightListing);
+</script>

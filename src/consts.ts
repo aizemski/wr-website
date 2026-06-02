@@ -3,3 +3,13 @@ export const SITE_URL = 'https://whiteraven.app';
 export const CONTACT_EMAIL = 'hello@whiteraven.app';
 export const SITE_DESCRIPTION =
 	'White Raven builds web apps, AI systems, and AWS infrastructure for teams that need to ship faster and grow revenue.';
+
+export const CORE_STACK = [
+	'React',
+	'Next.js',
+	'TypeScript',
+	'Python',
+	'AWS',
+	'LLMs',
+	'Kubernetes',
+] as const;

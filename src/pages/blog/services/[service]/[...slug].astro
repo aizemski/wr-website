@@ -1,0 +1,113 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+import BlogHeroImage from '../../../../components/BlogHeroImage.astro';
+import InsightTags from '../../../../components/InsightTags.astro';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import {
+	SERVICE_SLUGS,
+	getInsightHubUrl,
+	getReadingTime,
+	isServiceInsight,
+	type ServiceSlug,
+} from '../../../../utils/insights';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('insights');
+	return posts
+		.filter((post) => isServiceInsight(post))
+		.map((post) => {
+			const [, service, ...rest] = post.id.split('/');
+			return {
+				params: { service, slug: rest.join('/') },
+				props: post,
+			};
+		});
+}
+
+type Props = CollectionEntry<'insights'>;
+
+const post = Astro.props;
+const { service } = Astro.params;
+
+if (!service || !SERVICE_SLUGS.includes(service as ServiceSlug)) {
+	return Astro.redirect('/blog/');
+}
+
+const expectedPrefix = `services/${service}/`;
+if (!post.id.startsWith(expectedPrefix)) {
+	return Astro.redirect('/blog/');
+}
+
+const { title, description, pubDate, updatedDate, heroImage } = post.data;
+const { Content } = await render(post);
+const readingTime = getReadingTime(post.body ?? '');
+const hubUrl = getInsightHubUrl(post);
+---
+
+<BaseLayout title={title} description={description}>
+	<article class="page-shell">
+		<div class="section-padding page-container">
+			<a
+				href={hubUrl}
+				class="mb-10 inline-flex items-center gap-2 text-sm font-medium text-body transition-colors duration-300 hover:text-[#0067FF] dark:hover:text-white"
+			>
+				<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+					<path d="M19 12H5M12 19l-7-7 7-7" />
+				</svg>
+				Back to hub
+			</a>
+
+			<header class="mx-auto max-w-3xl">
+				<div class="mb-6">
+					<InsightTags post={post} max={12} />
+				</div>
+
+				<h1 class="font-[family-name:var(--font-display)] text-heading text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
+					{title}
+				</h1>
+				<p class="text-body mt-5 text-lg leading-relaxed">{description}</p>
+
+				<div class="mt-6 flex flex-wrap items-center gap-3 text-sm text-muted">
+					<FormattedDate date={pubDate} />
+					<span aria-hidden="true">·</span>
+					<span>{readingTime} min read</span>
+					{
+						updatedDate && (
+							<>
+								<span aria-hidden="true">·</span>
+								<span>
+									Updated <FormattedDate date={updatedDate} />
+								</span>
+							</>
+						)
+					}
+				</div>
+			</header>
+
+			{
+				heroImage && (
+					<div class="mx-auto mt-12 max-w-4xl overflow-hidden rounded-2xl border border-theme shadow-lg dark:shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
+						<div class="aspect-[2/1]">
+							<BlogHeroImage src={heroImage} alt="" />
+						</div>
+					</div>
+				)
+			}
+
+			<div class="blog-prose prose-headings:font-display prose-headings:font-semibold prose-headings:tracking-tight mx-auto mt-12 max-w-3xl">
+				<Content />
+			</div>
+
+			<div class="card-glass mx-auto mt-16 max-w-3xl p-8 text-center">
+				<p class="font-[family-name:var(--font-display)] text-heading text-xl font-semibold">
+					Building something similar?
+				</p>
+				<p class="text-body mt-3 text-sm">
+					Tell us about your stack, timeline, and goals. We reply within one business day.
+				</p>
+				<a href="/contact" class="btn-primary mt-6">Let&apos;s Discuss Your Vision</a>
+			</div>
+		</div>
+	</article>
+</BaseLayout>

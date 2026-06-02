@@ -2,8 +2,11 @@
 title: 'Web Development Trends Shaping 2026'
 description: 'Edge hosting, AI-assisted delivery, and enforceable design systems are raising the bar for premium web experiences.'
 pubDate: '2026-03-20'
-heroImage: '../../assets/blog-placeholder-5.jpg'
-tags: ['Digital Transformation', 'JavaScript / TypeScript']
+heroImage: '../../../assets/blog/web-development-trends-2026.png'
+personas: ['Enterprise Engineering']
+services: ['Product Engineering', 'Cloud & DevOps']
+technologies: ['React & Next.js', 'JavaScript & TypeScript', 'AWS & Serverless']
+industries: ['Enterprise Software']
 ---
 
 In 2026, the web rewards teams that combine performance, craft, and speed. Three shifts show up on almost every serious product and agency engagement.

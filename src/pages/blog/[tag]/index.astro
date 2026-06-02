@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import InsightsListing from '../../../components/InsightsListing.astro';
+import {
+	BLOG_TAG_SLUGS,
+	filterPostsByTagSlug,
+	getBlogTagMeta,
+	isBlogTagSlug,
+	sortInsightsByDate,
+	type BlogTagSlug,
+} from '../../../utils/insights';
+
+export function getStaticPaths() {
+	return BLOG_TAG_SLUGS.map((tag) => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params;
+
+if (!tag || !isBlogTagSlug(tag)) {
+	return Astro.redirect('/blog/');
+}
+
+const tagSlug = tag as BlogTagSlug;
+const meta = getBlogTagMeta(tagSlug);
+const allPosts = await getCollection('insights');
+const posts = sortInsightsByDate(filterPostsByTagSlug(allPosts, tagSlug));
+
+const eyebrowLabels: Record<typeof meta.dimension, string> = {
+	persona: 'Audience',
+	service: 'Service',
+	technology: 'Technology',
+	industry: 'Industry',
+};
+---
+
+<BaseLayout title={meta.title} description={meta.description}>
+	<div class="page-shell">
+		<InsightsListing
+			eyebrow={eyebrowLabels[meta.dimension]}
+			title={meta.title}
+			description={meta.description}
+			posts={posts}
+			activeTagSlug={tagSlug}
+			backHref="/blog/"
+			backLabel="All articles"
+		/>
+
+		{
+			meta.relatedHref && (
+				<div class="page-container pb-20">
+					<a
+						href={meta.relatedHref}
+						class="card-glass inline-flex flex-col p-6 transition-colors hover:border-[#0067FF]/35 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
+					>
+						<div>
+							<p class="text-xs font-semibold uppercase tracking-wider text-[#0067FF] dark:text-[#3d8fff]">
+								{meta.dimension === 'persona' ? 'How we help' : 'What we deliver'}
+							</p>
+							<p class="font-[family-name:var(--font-display)] text-heading mt-2 text-lg font-semibold">
+								{meta.relatedLabel}
+							</p>
+							<p class="text-body mt-2 text-sm">
+								{meta.dimension === 'persona'
+									? 'Outcomes, process, and fit for this audience.'
+									: 'Capabilities, outcomes, and how engagements run.'}
+							</p>
+						</div>
+						<span class="text-sm font-medium text-[#0067FF] dark:text-[#3d8fff]">Learn more →</span>
+					</a>
+				</div>
+			)
+		}
+	</div>
+</BaseLayout>

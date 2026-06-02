@@ -2,16 +2,19 @@
 import type { CollectionEntry } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
 import BlogHeroImage from './BlogHeroImage.astro';
-import { getReadingTime } from '../utils/blog';
+import InsightTags from './InsightTags.astro';
+import { getInsightUrl, getReadingTime } from '../utils/insights';
 
 interface Props {
-	post: CollectionEntry<'blog'>;
+	post: CollectionEntry<'insights'>;
 	featured?: boolean;
 }
 
 const { post, featured = false } = Astro.props;
-const { title, description, pubDate, heroImage, tags } = post.data;
+const { title, description, pubDate, heroImage, personas, services, technologies, industries } =
+	post.data;
 const readingTime = getReadingTime(post.body ?? '');
+const href = getInsightUrl(post);
 ---
 
 <article
@@ -19,10 +22,13 @@ const readingTime = getReadingTime(post.body ?? '');
 		'group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-surface-elevated shadow-sm transition-all duration-500 hover:-translate-y-0.5 hover:border-[#0067FF]/35 hover:shadow-[0_12px_40px_rgba(0,103,255,0.12)] dark:bg-slate-900/60 dark:shadow-none',
 		featured ? 'md:col-span-2 md:grid md:grid-cols-2 md:gap-0' : '',
 	]}
-	data-tags={tags.join(',')}
+	data-personas={personas.join(',')}
+	data-services={(services ?? []).join(',')}
+	data-technologies={(technologies ?? []).join(',')}
+	data-industries={(industries ?? []).join(',')}
 >
 	<a
-		href={`/blog/${post.id}/`}
+		href={href}
 		class:list={[
 			'block overflow-hidden',
 			featured ? 'md:h-full' : 'aspect-[16/10]',
@@ -44,19 +50,12 @@ const readingTime = getReadingTime(post.body ?? '');
 	</a>
 
 	<div class:list={['flex flex-1 flex-col p-6', featured ? 'md:justify-center md:p-10' : '']}>
-		<div class="mb-3 flex flex-wrap gap-2">
-			{tags.slice(0, featured ? 4 : 2).map((tag) => (
-				<span class="rounded-full bg-[#0067FF]/10 px-2.5 py-0.5 text-xs font-medium text-[#0067FF] ring-1 ring-[#0067FF]/25 dark:text-[#3d8fff]">
-					{tag}
-				</span>
-			))}
+		<div class="mb-3">
+			<InsightTags post={post} max={featured ? 6 : 4} />
 		</div>
 
 		<h2 class:list={['font-[family-name:var(--font-display)] font-semibold text-heading', featured ? 'text-2xl md:text-3xl' : 'text-lg']}>
-			<a
-				href={`/blog/${post.id}/`}
-				class="transition-colors duration-300 hover:text-[#0067FF] dark:hover:text-[#3d8fff]"
-			>
+			<a href={href} class="transition-colors duration-300 hover:text-[#0067FF] dark:hover:text-[#3d8fff]">
 				{title}
 			</a>
 		</h2>

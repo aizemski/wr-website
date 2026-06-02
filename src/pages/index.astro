@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { CORE_STACK } from '../consts';
 
 const trustLogos = [
 	{ name: 'Northline' },
@@ -53,6 +54,11 @@ const audiences = [
 		description: 'Modernize legacy systems and cloud platforms without pausing the roadmap.',
 		href: '/for/enterprise-engineering',
 	},
+	{
+		title: 'Small business owners',
+		description: 'Custom portals and automation when SaaS templates do not match how you work.',
+		href: '/for/small-business',
+	},
 ];
 
 const processSteps = [
@@ -95,7 +101,7 @@ const outcomes = [
 
 <BaseLayout
 	title="White Raven — Software That Drives Your Business Forward"
-	description="From engaging mobile apps to AI-powered internal tools, White Raven bridges complex technology and real business growth with React, Python, and AWS."
+	description="From engaging mobile apps to AI-powered internal tools, White Raven bridges complex technology and real business growth with React, Next.js, TypeScript, Python, AWS, LLMs, and Kubernetes."
 >
 	<div class="page-shell">
 		<!-- Hero -->
@@ -108,7 +114,7 @@ const outcomes = [
 				<div class="mx-auto max-w-4xl text-center">
 					<p class="badge-pill mb-8">
 						<span class="h-1.5 w-1.5 rounded-full bg-[#0067FF]" aria-hidden="true"></span>
-						React · Python · AWS
+						{CORE_STACK.join(' · ')}
 					</p>
 
 					<h1
@@ -119,7 +125,7 @@ const outcomes = [
 
 					<p class="text-body mx-auto mt-6 max-w-2xl text-base leading-relaxed sm:text-lg md:text-xl">
 						From engaging mobile apps to AI-powered internal tools, we bridge the gap between complex
-						technology and real business growth. Expertly crafted with React, Python, and AWS.
+						technology and real business growth. Expertly crafted with React, Next.js, TypeScript, Python, AWS, LLMs, and Kubernetes.
 					</p>
 
 					<div
@@ -341,7 +347,7 @@ const outcomes = [
 				<p class="text-sm font-medium text-muted">Core stack</p>
 				<ul class="mt-6 flex flex-wrap items-center justify-center gap-3" role="list">
 					{
-						['React', 'Next.js', 'TypeScript', 'Python', 'AWS', 'LLMs', 'Kubernetes'].map((tech) => (
+						CORE_STACK.map((tech) => (
 							<li>
 								<span class="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200">
 									{tech}

@@ -1,48 +1,66 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
-import BlogHeroImage from '../../components/BlogHeroImage.astro';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getReadingTime } from '../../utils/blog';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import BlogHeroImage from '../../../components/BlogHeroImage.astro';
+import InsightTags from '../../../components/InsightTags.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import {
+	PERSONA_SLUGS,
+	getInsightHubUrl,
+	getReadingTime,
+	isServiceInsight,
+	type PersonaSlug,
+} from '../../../utils/insights';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
-	}));
+	const posts = await getCollection('insights');
+	return posts
+		.filter((post) => !isServiceInsight(post))
+		.map((post) => {
+			const [audience, ...rest] = post.id.split('/');
+			return {
+				params: { audience, slug: rest.join('/') },
+				props: post,
+			};
+		});
 }
 
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<'insights'>;
 
 const post = Astro.props;
-const { title, description, pubDate, updatedDate, heroImage, tags } = post.data;
+const { audience } = Astro.params;
+
+if (!audience || !PERSONA_SLUGS.includes(audience as PersonaSlug)) {
+	return Astro.redirect('/blog/');
+}
+
+const expectedPrefix = `${audience}/`;
+if (!post.id.startsWith(expectedPrefix)) {
+	return Astro.redirect('/blog/');
+}
+
+const { title, description, pubDate, updatedDate, heroImage } = post.data;
 const { Content } = await render(post);
 const readingTime = getReadingTime(post.body ?? '');
+const hubUrl = getInsightHubUrl(post);
 ---
 
 <BaseLayout title={title} description={description}>
 	<article class="page-shell">
 		<div class="section-padding page-container">
 			<a
-				href="/blog"
+				href={hubUrl}
 				class="mb-10 inline-flex items-center gap-2 text-sm font-medium text-body transition-colors duration-300 hover:text-[#0067FF] dark:hover:text-white"
 			>
 				<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
 					<path d="M19 12H5M12 19l-7-7 7-7" />
 				</svg>
-				Back to blog
+				Back to hub
 			</a>
 
 			<header class="mx-auto max-w-3xl">
-				<div class="mb-6 flex flex-wrap gap-2">
-					{
-						tags.map((tag) => (
-							<span class="rounded-full bg-[#0067FF]/10 px-3 py-1 text-xs font-medium text-[#0067FF] ring-1 ring-[#0067FF]/25 dark:text-[#3d8fff]">
-								{tag}
-							</span>
-						))
-					}
+				<div class="mb-6">
+					<InsightTags post={post} max={12} />
 				</div>
 
 				<h1 class="font-[family-name:var(--font-display)] text-heading text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">

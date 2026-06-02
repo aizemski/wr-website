@@ -2,8 +2,11 @@
 title: 'From Notebook to Production: Python AI/ML That Ships'
 description: 'How to take Python ML prototypes live with clear APIs, serving patterns, and observability your ops team can run.'
 pubDate: '2026-02-01'
-heroImage: '../../assets/blog-placeholder-4.jpg'
-tags: ['Python', 'AI & LLMs']
+heroImage: '../../../../assets/blog/python-ai-ml-production.png'
+personas: ['Enterprise Engineering', 'Operations Leaders', 'Startup Founders']
+services: ['Applied AI']
+technologies: ['Python', 'AI & LLMs']
+industries: ['Startups & SaaS', 'Enterprise Software', 'Field & Offline Operations']
 ---
 
 Most AI projects stall because production was planned too late. The model looked fine in a notebook, then broke under real traffic, missing data, and unclear ownership. Python still leads ML work. With disciplined engineering, you can close the gap between experiment and deployment.

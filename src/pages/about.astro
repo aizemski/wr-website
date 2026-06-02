@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { CORE_STACK } from '../consts';
 
 const principles = [
 	{
@@ -84,6 +85,11 @@ const audiences = [
 		href: '/for/enterprise-engineering',
 		label: 'Enterprise engineering',
 		description: 'Modernization, cloud, and delivery practices that pass security review.',
+	},
+	{
+		href: '/for/small-business',
+		label: 'Small business owners',
+		description: 'Tailored ops software when spreadsheets and generic SaaS stop scaling.',
 	},
 ];
 
@@ -336,13 +342,11 @@ const faq = [
 					</p>
 					<ul class="mt-8 flex flex-wrap gap-3" role="list">
 						{
-							['React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'TensorFlow', 'AWS Lambda', 'EventBridge', 'GitHub Actions', 'CloudWatch'].map(
-								(tool) => (
-									<li>
-										<span class="badge-pill">{tool}</span>
-									</li>
-								),
-							)
+							CORE_STACK.map((tool) => (
+								<li>
+									<span class="badge-pill">{tool}</span>
+								</li>
+							))
 						}
 					</ul>
 				</div>

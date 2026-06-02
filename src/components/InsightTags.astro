@@ -1,0 +1,72 @@
+---
+import {
+	getBlogTagPath,
+	getIndustrySlug,
+	getPersonaSlugFromLabel,
+	getServiceSlugFromLabel,
+	getTechnologySlug,
+	type InsightEntry,
+} from '../utils/insights';
+
+interface Props {
+	post: InsightEntry;
+	max?: number;
+}
+
+const { post, max = 8 } = Astro.props;
+const { personas, services, technologies, industries } = post.data;
+
+type TagItem = { kind: 'persona' | 'service' | 'technology' | 'industry'; label: string; href: string };
+
+const items: TagItem[] = [
+	...personas.map((label) => ({
+		kind: 'persona' as const,
+		label,
+		href: getBlogTagPath(getPersonaSlugFromLabel(label)),
+	})),
+	...(services ?? []).map((label) => ({
+		kind: 'service' as const,
+		label,
+		href: getBlogTagPath(getServiceSlugFromLabel(label)),
+	})),
+	...(technologies ?? []).map((label) => ({
+		kind: 'technology' as const,
+		label,
+		href: getBlogTagPath(getTechnologySlug(label)),
+	})),
+	...(industries ?? []).map((label) => ({
+		kind: 'industry' as const,
+		label,
+		href: getBlogTagPath(getIndustrySlug(label)),
+	})),
+];
+
+const visible = items.slice(0, max);
+
+const styles: Record<TagItem['kind'], string> = {
+	persona:
+		'bg-[#0067FF]/10 text-[#0067FF] ring-[#0067FF]/25 hover:bg-[#0067FF]/20 dark:text-[#3d8fff]',
+	service:
+		'bg-[#0067FF]/10 text-[#0067FF] ring-[#0067FF]/25 hover:bg-[#0067FF]/20 dark:text-[#3d8fff]',
+	technology:
+		'bg-emerald-500/10 text-emerald-800 ring-emerald-500/25 hover:bg-emerald-500/20 dark:text-emerald-300',
+	industry:
+		'bg-amber-500/10 text-amber-900 ring-amber-500/25 hover:bg-amber-500/20 dark:text-amber-200',
+};
+---
+
+<div class="flex flex-wrap gap-2">
+	{
+		visible.map((item) => (
+			<a
+				href={item.href}
+				class:list={[
+					'rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 transition-colors',
+					styles[item.kind],
+				]}
+			>
+				{item.label}
+			</a>
+		))
+	}
+</div>
