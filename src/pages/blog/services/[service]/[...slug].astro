@@ -6,14 +6,16 @@ import InsightTags from '../../../../components/InsightTags.astro';
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import {
 	SERVICE_SLUGS,
+	filterPublishedInsights,
 	getInsightHubUrl,
 	getReadingTime,
+	isInsightPublished,
 	isServiceInsight,
 	type ServiceSlug,
 } from '../../../../utils/insights';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('insights');
+	const posts = filterPublishedInsights(await getCollection('insights'));
 	return posts
 		.filter((post) => isServiceInsight(post))
 		.map((post) => {
@@ -29,6 +31,10 @@ type Props = CollectionEntry<'insights'>;
 
 const post = Astro.props;
 const { service } = Astro.params;
+
+if (!isInsightPublished(post)) {
+	return Astro.redirect('/blog/');
+}
 
 if (!service || !SERVICE_SLUGS.includes(service as ServiceSlug)) {
 	return Astro.redirect('/blog/');

@@ -1,10 +1,10 @@
 import { getCollection } from 'astro:content';
 import rss from '@astrojs/rss';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-import { getInsightUrl } from '../utils/insights';
+import { filterPublishedInsights, getInsightUrl, sortInsightsByDate } from '../utils/insights';
 
 export async function GET(context) {
-	const posts = await getCollection('insights');
+	const posts = sortInsightsByDate(filterPublishedInsights(await getCollection('insights')));
 	return rss({
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,

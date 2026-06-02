@@ -80,6 +80,12 @@ npm run dev
 
 Preview hubs and articles at `/blog/...`. Run `npm run build` before merge.
 
+### Scheduled posts (`pubDate` in the future)
+
+Articles with a **future** `pubDate` are hidden from the blog index, tag hubs, RSS, and article routes until that date (UTC calendar day). Listing and static paths use `filterPublishedInsights()` in `src/utils/insights.ts`.
+
+On a static deploy, a post goes live on the **first build on or after** its `pubDate`. Schedule CI or redeploys accordingly, or set `pubDate` to today when you want immediate visibility.
+
 ## Related code
 
 | File | Role |

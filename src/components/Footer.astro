@@ -80,14 +80,20 @@ const serviceLinks = [
 		</div>
 
 		<div
-			class="mt-12 flex flex-col gap-3 border-t border-theme pt-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between"
+			class="mt-12 flex flex-col gap-4 border-t border-theme pt-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between"
 		>
 			<p>&copy; {year} {SITE_TITLE}. All rights reserved.</p>
-			<p>
+			<nav aria-label="Legal" class="flex flex-wrap items-center gap-x-5 gap-y-2">
+				<a href="/privacy-policy" class="text-body transition-colors hover:text-[#0067FF] dark:hover:text-[#3d8fff]">
+					Privacy Policy
+				</a>
+				<a href="/terms-of-use" class="text-body transition-colors hover:text-[#0067FF] dark:hover:text-[#3d8fff]">
+					Terms of Use
+				</a>
 				<a href={`mailto:${CONTACT_EMAIL}`} class="text-body transition-colors hover:text-[#0067FF] dark:hover:text-[#3d8fff]">
 					{CONTACT_EMAIL}
 				</a>
-			</p>
+			</nav>
 		</div>
 	</div>
 </footer>

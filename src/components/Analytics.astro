@@ -1,0 +1,42 @@
+---
+import {
+	CLARITY_PROJECT_ID,
+	COOKIE_SCRIPT_ID,
+	GOOGLE_ANALYTICS_ID,
+	GOOGLE_SITE_VERIFICATION,
+	MS_VALIDATE_CONTENT,
+} from '../consts';
+---
+
+<meta name="msvalidate.01" content={MS_VALIDATE_CONTENT} />
+<meta name="google-site-verification" content={GOOGLE_SITE_VERIFICATION} />
+
+<script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}></script>
+<script is:inline define:vars={{ gaId: GOOGLE_ANALYTICS_ID }}>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag('js', new Date());
+	gtag('config', gaId);
+</script>
+
+<script
+	src={`https://cdn.cookie-script.com/s/${COOKIE_SCRIPT_ID}.js`}
+	defer
+></script>
+
+<script is:inline define:vars={{ clarityProjectId: CLARITY_PROJECT_ID }}>
+	(function (c, l, a, r, i, t, y) {
+		c[a] =
+			c[a] ||
+			function () {
+				(c[a].q = c[a].q || []).push(arguments);
+			};
+		t = l.createElement(r);
+		t.async = 1;
+		t.src = 'https://www.clarity.ms/tag/' + i;
+		y = l.getElementsByTagName(r)[0];
+		y.parentNode.insertBefore(t, y);
+	})(window, document, 'clarity', 'script', clarityProjectId);
+</script>

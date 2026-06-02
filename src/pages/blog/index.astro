@@ -4,12 +4,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import InsightsListing, { type FilterChip } from '../../components/InsightsListing.astro';
 import {
 	BLOG_TAG_SLUGS,
+	filterPublishedInsights,
 	getBlogTagMeta,
 	getBlogTagPath,
 	sortInsightsByDate,
 } from '../../utils/insights';
 
-const posts = sortInsightsByDate(await getCollection('insights'));
+const posts = sortInsightsByDate(filterPublishedInsights(await getCollection('insights')));
 
 const filterChips: FilterChip[] = BLOG_TAG_SLUGS.map((slug) => {
 	const meta = getBlogTagMeta(slug);

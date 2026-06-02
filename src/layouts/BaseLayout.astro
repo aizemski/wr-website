@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import Analytics from '../components/Analytics.astro';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
@@ -20,6 +21,7 @@ const {
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
+		<Analytics />
 		<ClientRouter />
 	</head>
 	<body class="flex min-h-screen flex-col">

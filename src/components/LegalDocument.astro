@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { LEGAL_LAST_UPDATED } from '../consts';
+
+interface Props {
+	title: string;
+	description: string;
+	lastUpdated?: string;
+}
+
+const { title, description, lastUpdated = LEGAL_LAST_UPDATED } = Astro.props;
+---
+
+<BaseLayout {title} {description}>
+	<div class="page-shell">
+		<article class="section-padding page-container">
+			<div class="mx-auto max-w-3xl">
+				<header class="border-b border-theme pb-8">
+					<p class="text-xs font-semibold uppercase tracking-wider text-[#0067FF] dark:text-[#3d8fff]">Legal</p>
+					<h1
+						class="font-[family-name:var(--font-display)] text-heading mt-3 text-3xl font-semibold tracking-tight sm:text-4xl"
+					>
+						{title}
+					</h1>
+					<p class="text-body mt-4 leading-relaxed">{description}</p>
+					<p class="text-muted-theme mt-6 text-sm">Last updated: {lastUpdated}</p>
+				</header>
+
+				<div class="blog-prose mt-10">
+					<slot />
+				</div>
+			</div>
+		</article>
+	</div>
+</BaseLayout>

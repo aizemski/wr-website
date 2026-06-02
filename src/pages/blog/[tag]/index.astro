@@ -5,6 +5,7 @@ import InsightsListing from '../../../components/InsightsListing.astro';
 import {
 	BLOG_TAG_SLUGS,
 	filterPostsByTagSlug,
+	filterPublishedInsights,
 	getBlogTagMeta,
 	isBlogTagSlug,
 	sortInsightsByDate,
@@ -23,7 +24,7 @@ if (!tag || !isBlogTagSlug(tag)) {
 
 const tagSlug = tag as BlogTagSlug;
 const meta = getBlogTagMeta(tagSlug);
-const allPosts = await getCollection('insights');
+const allPosts = filterPublishedInsights(await getCollection('insights'));
 const posts = sortInsightsByDate(filterPostsByTagSlug(allPosts, tagSlug));
 
 const eyebrowLabels: Record<typeof meta.dimension, string> = {

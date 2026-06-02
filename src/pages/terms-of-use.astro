@@ -1,0 +1,209 @@
+---
+import LegalDocument from '../components/LegalDocument.astro';
+import { CONTACT_EMAIL, LEGAL_ENTITY_NAME, SITE_URL } from '../consts';
+---
+
+<LegalDocument
+	title="Terms of Use"
+	description="Rules for using the White Raven website and digital services. Includes information required for visitors in the European Union and United Kingdom."
+>
+	<p>
+		These Terms of Use (&quot;Terms&quot;) govern access to and use of <a href={SITE_URL}>{SITE_URL.replace('https://', '')}</a>
+		(the &quot;Site&quot;) operated by <strong>{LEGAL_ENTITY_NAME}</strong> (&quot;we&quot;, &quot;us&quot;, or
+		&quot;our&quot;). By accessing or using the Site, you agree to these Terms. If you do not agree, do not use the Site.
+	</p>
+	<p>
+		These Terms work together with our <a href="/privacy-policy">Privacy Policy</a>, which explains how we process personal
+		data.
+	</p>
+
+	<h2>1. Service provider information</h2>
+	<p>In accordance with EU e-commerce transparency rules, our service provider details are:</p>
+	<ul>
+		<li><strong>Trading name:</strong> {LEGAL_ENTITY_NAME}</li>
+		<li>
+			<strong>Website:</strong> <a href={SITE_URL}>{SITE_URL}</a>
+		</li>
+		<li>
+			<strong>Contact email:</strong> <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+		</li>
+	</ul>
+	<p>
+		We provide custom software engineering, applied AI, workflow automation, and cloud consulting services to business
+		clients. The Site is an informational and lead-generation channel, not a consumer marketplace.
+	</p>
+	<p>
+		If you require a postal address, company registration number, or VAT identification for legal or procurement purposes,
+		email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> and we will respond within a reasonable time.
+	</p>
+
+	<h2>2. Eligibility and accounts</h2>
+	<p>
+		The Site is directed at business users and professionals. You must be at least 18 years old (or the age of legal majority
+		in your jurisdiction) to use the Site. You represent that you have authority to bind your organization when submitting
+		inquiries on its behalf.
+	</p>
+	<p>We do not offer user accounts on the Site. Access is provided on an anonymous basis except where you contact us.</p>
+
+	<h2>3. Permitted use</h2>
+	<p>You may use the Site only for lawful purposes and in accordance with these Terms. You agree not to:</p>
+	<ul>
+		<li>Use the Site in any way that violates applicable law or regulation;</li>
+		<li>Attempt to gain unauthorized access to our systems, networks, or data;</li>
+		<li>Introduce malware, scrape the Site in a manner that impairs performance, or bypass security measures;</li>
+		<li>Use automated means to harvest contact information or content without our prior written consent;</li>
+		<li>Misrepresent your identity or affiliation when contacting us;</li>
+		<li>Use Site content to build a competing service through systematic copying;</li>
+		<li>Interfere with other users&apos; access to the Site.</li>
+	</ul>
+	<p>We may suspend or restrict access if we reasonably believe you have violated these Terms or applicable law.</p>
+
+	<h2>4. Intellectual property</h2>
+	<p>
+		The Site and its content (including text, graphics, logos, layout, code, blog articles, and design elements) are owned
+		by {LEGAL_ENTITY_NAME} or our licensors and are protected by copyright, trademark, and other intellectual property laws.
+	</p>
+	<p>
+		We grant you a limited, non-exclusive, non-transferable, revocable license to access and view the Site for your internal
+		business purposes. You may share links to public pages. You may not copy, modify, distribute, publicly display, or create
+		derivative works from Site content except:
+	</p>
+	<ul>
+		<li>As permitted by mandatory law (including quotation rights);</li>
+		<li>With our prior written consent; or</li>
+		<li>Through standard sharing features (linking to URLs, RSS subscription for blog posts).</li>
+	</ul>
+	<p>
+		&quot;White Raven&quot; and related branding may not be used in a way that suggests endorsement or partnership without
+		our permission.
+	</p>
+
+	<h2>5. Blog and informational content</h2>
+	<p>
+		Articles on the Site are provided for general information. They do not constitute legal, financial, security, or
+		professional advice. Technical guidance may become outdated; verify critical decisions with qualified professionals and
+		your own testing.
+	</p>
+	<p>
+		We aim for accuracy but do not warrant that all content is complete, current, or error-free. Use of information from the
+		Site is at your own risk.
+	</p>
+
+	<h2>6. Contact submissions and communications</h2>
+	<p>
+		When you submit a project inquiry or email us, you represent that the information you provide is accurate to the best of
+		your knowledge and that you are authorized to share it.
+	</p>
+	<p>
+		Our contact form helps you compose a message locally; submission occurs when you send email through your mail client or
+		otherwise deliver the message to us. Processing of personal data is described in our
+		<a href="/privacy-policy">Privacy Policy</a>.
+	</p>
+	<p>
+		We may use your inquiry to evaluate a potential engagement, respond to you, and maintain business records. We are not
+		obligated to respond to every message or to enter into a contract.
+	</p>
+
+	<h2>7. Professional services</h2>
+	<p>
+		Descriptions of services on the Site are invitations to treat, not binding offers. Any engagement with {LEGAL_ENTITY_NAME}
+		is governed by a separate written agreement (statement of work, master services agreement, or similar) signed or
+		accepted by both parties. If there is a conflict between these Terms and a signed client agreement, the client agreement
+		prevails for that engagement.
+	</p>
+
+	<h2>8. Third-party links and tools</h2>
+	<p>
+		The Site may link to third-party websites or embed third-party services (analytics, fonts, consent management). We do
+		not control and are not responsible for third-party content, policies, or practices. Your use of third-party services
+		is subject to their terms and privacy policies.
+	</p>
+
+	<h2>9. Disclaimer of warranties</h2>
+	<p>
+		To the fullest extent permitted by applicable law, the Site and all content are provided on an &quot;as is&quot; and
+		&quot;as available&quot; basis without warranties of any kind, whether express, implied, or statutory, including
+		implied warranties of merchantability, fitness for a particular purpose, non-infringement, and accuracy.
+	</p>
+	<p>
+		<strong>EU/UK consumers:</strong> Nothing in these Terms excludes or limits warranties or rights you cannot waive under
+		mandatory consumer protection law in your country of residence.
+	</p>
+
+	<h2>10. Limitation of liability</h2>
+	<p>
+		To the fullest extent permitted by law, {LEGAL_ENTITY_NAME} and its directors, employees, and contractors will not be
+		liable for any indirect, incidental, special, consequential, or punitive damages, or for loss of profits, revenue, data,
+		or goodwill, arising from or related to your use of the Site.
+	</p>
+	<p>
+		Our total aggregate liability for claims arising from Site use (excluding liability that cannot be limited by law) is
+		limited to EUR 100 or the minimum amount permitted by applicable law, whichever is greater.
+	</p>
+	<p>
+		<strong>EU/UK consumers:</strong> Mandatory statutory rights remain unaffected. We do not limit liability for death or
+		personal injury caused by negligence, fraud, or fraudulent misrepresentation, or any other liability that cannot be
+		excluded under applicable law.
+	</p>
+	<p>
+		<strong>Business users:</strong> If you use the Site in a commercial capacity, you agree that the limitations above
+		reflect a reasonable allocation of risk for a free informational website.
+	</p>
+
+	<h2>11. Indemnity</h2>
+	<p>
+		If you use the Site in violation of these Terms or applicable law and cause us to suffer loss, you agree to indemnify
+		and hold us harmless from reasonable claims, damages, and costs (including legal fees) arising from your breach, except
+		where prohibited by mandatory consumer law.
+	</p>
+
+	<h2>12. Availability and changes</h2>
+	<p>
+		We may modify, suspend, or discontinue any part of the Site at any time without notice. We may update these Terms by
+		posting a revised version on this page with an updated date. Material changes will be indicated on the Site. Continued
+		use after changes become effective constitutes acceptance where permitted by law. If you disagree with updated Terms,
+		stop using the Site.
+	</p>
+
+	<h2>13. Governing law and jurisdiction</h2>
+	<p>
+		These Terms are governed by the laws applicable to {LEGAL_ENTITY_NAME} as service provider, without regard to
+		conflict-of-law rules that would require another jurisdiction&apos;s laws.
+	</p>
+	<p>
+		<strong>If you are a consumer in the European Union or United Kingdom,</strong> you benefit from mandatory provisions of
+		the law of your country of residence. Nothing in these Terms affects your right to bring proceedings in the courts of
+		your habitual residence where EU or UK consumer law grants that right.
+	</p>
+	<p>
+		For business users, exclusive jurisdiction lies with the courts competent for our place of establishment, unless
+		mandatory law requires otherwise.
+	</p>
+
+	<h2>14. Online dispute resolution (EU consumers)</h2>
+	<p>
+		The European Commission provides an Online Dispute Resolution (ODR) platform for consumers at
+		<a href="https://ec.europa.eu/consumers/odr" rel="noopener noreferrer" target="_blank"
+			>https://ec.europa.eu/consumers/odr</a
+		>. Our email for ODR-related contact is <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. We are not obligated
+		to participate in alternative dispute resolution proceedings before consumer arbitration boards unless required by law.
+	</p>
+
+	<h2>15. Severability</h2>
+	<p>
+		If any provision of these Terms is held invalid or unenforceable, the remaining provisions remain in full force and the
+		invalid provision will be replaced with a valid provision that most closely reflects the original intent.
+	</p>
+
+	<h2>16. Entire agreement</h2>
+	<p>
+		These Terms, together with the Privacy Policy, constitute the entire agreement between you and {LEGAL_ENTITY_NAME}
+		regarding use of the Site. They do not replace separate contracts for professional services.
+	</p>
+
+	<h2>17. Contact</h2>
+	<p>
+		Questions about these Terms: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> with the subject line
+		&quot;Terms of Use&quot;.
+	</p>
+</LegalDocument>

@@ -120,6 +120,22 @@ export function getReadingTime(body: string): number {
 	return Math.max(1, Math.ceil(words / 200));
 }
 
+function startOfUtcDay(date: Date): number {
+	return Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
+}
+
+/** True when pubDate is today or earlier (UTC calendar day). */
+export function isInsightPublished(post: InsightEntry, now: Date = new Date()): boolean {
+	return startOfUtcDay(post.data.pubDate) <= startOfUtcDay(now);
+}
+
+export function filterPublishedInsights(
+	posts: InsightEntry[],
+	now: Date = new Date(),
+): InsightEntry[] {
+	return posts.filter((post) => isInsightPublished(post, now));
+}
+
 export function sortInsightsByDate(posts: InsightEntry[]): InsightEntry[] {
 	return [...posts].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 }
