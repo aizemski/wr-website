@@ -1,49 +1,391 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const trustLogos = [
+	{ name: 'Northline' },
+	{ name: 'Vertex' },
+	{ name: 'Harbor Co.' },
+	{ name: 'Summit' },
+	{ name: 'Clearpath' },
+	{ name: 'Axiom' },
+];
+
+const services = [
+	{
+		title: 'Custom Product Engineering & Modernization',
+		description:
+			'Rapid MVP development for startups and seamless architecture modernization for scaling enterprises.',
+		href: '/services/product-engineering',
+	},
+	{
+		title: 'Applied AI & Machine Learning',
+		description:
+			'Custom LLM integrations and predictive data models to unlock new capabilities and automate complex workflows.',
+		href: '/services/applied-ai',
+	},
+	{
+		title: 'Workflow Automation & Custom Portals',
+		description:
+			'Tailored platforms, PWAs, and robust data pipelines designed to digitize and streamline business processes.',
+		href: '/services/workflow-automation',
+	},
+	{
+		title: 'Cloud Architecture & DevOps Consulting',
+		description:
+			'Resilient, scalable AWS serverless infrastructure and CI/CD automation for high-performing engineering teams.',
+		href: '/services/cloud-architecture',
+	},
+];
+
+const audiences = [
+	{
+		title: 'Startup founders',
+		description: 'Validate ideas fast with MVPs that are ready for real users, not throwaway prototypes.',
+		href: '/for/startup-founders',
+	},
+	{
+		title: 'Operations leaders',
+		description: 'Replace manual workflows with software your team adopts on day one.',
+		href: '/for/operations-leaders',
+	},
+	{
+		title: 'Enterprise engineering',
+		description: 'Modernize legacy systems and cloud platforms without pausing the roadmap.',
+		href: '/for/enterprise-engineering',
+	},
+];
+
+const processSteps = [
+	{
+		step: '01',
+		title: 'Discover',
+		description: 'We map goals, constraints, and success metrics in a focused kickoff. You get a clear scope and timeline.',
+	},
+	{
+		step: '02',
+		title: 'Build',
+		description: 'Senior engineers ship in weekly cycles with demos, so you see progress and can steer early.',
+	},
+	{
+		step: '03',
+		title: 'Hand off',
+		description: 'We document, test, and transfer ownership so your team runs the system confidently after launch.',
+	},
+];
+
+const outcomes = [
+	{
+		title: 'Faster time to market',
+		description: 'Launch customer-facing products in weeks, not quarters, with architecture that scales.',
+	},
+	{
+		title: 'Less operational drag',
+		description: 'Automate reporting, data flows, and internal tools so teams stop living in spreadsheets.',
+	},
+	{
+		title: 'Production-ready AI',
+		description: 'Deploy LLMs and models with guardrails, monitoring, and workflows people actually use.',
+	},
+	{
+		title: 'Cloud you can trust',
+		description: 'Run on AWS serverless with CI/CD, security baselines, and observability built in from the start.',
+	},
+];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<BaseLayout
+	title="White Raven — Software That Drives Your Business Forward"
+	description="From engaging mobile apps to AI-powered internal tools, White Raven bridges complex technology and real business growth with React, Python, and AWS."
+>
+	<div class="page-shell">
+		<!-- Hero -->
+		<section class="relative overflow-hidden py-20 sm:py-28 md:py-32 lg:py-36">
+			<div
+				class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(0,103,255,0.14),transparent_55%)] dark:bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(0,103,255,0.18),transparent_55%)]"
+				aria-hidden="true"
+			/>
+			<div class="page-container relative">
+				<div class="mx-auto max-w-4xl text-center">
+					<p class="badge-pill mb-8">
+						<span class="h-1.5 w-1.5 rounded-full bg-[#0067FF]" aria-hidden="true"></span>
+						React · Python · AWS
+					</p>
+
+					<h1
+						class="font-[family-name:var(--font-display)] text-heading text-[1.75rem] font-semibold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-[3.5rem]"
+					>
+						Build Software That Drives Your Business Forward.
+					</h1>
+
+					<p class="text-body mx-auto mt-6 max-w-2xl text-base leading-relaxed sm:text-lg md:text-xl">
+						From engaging mobile apps to AI-powered internal tools, we bridge the gap between complex
+						technology and real business growth. Expertly crafted with React, Python, and AWS.
+					</p>
+
+					<div
+						class="mt-10 flex w-full flex-col items-stretch gap-4 sm:w-auto sm:flex-row sm:items-center sm:justify-center"
+					>
+						<a
+							href="/contact"
+							class="inline-flex items-center justify-center rounded-full bg-[#0067FF] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_0_28px_rgba(0,103,255,0.45)] transition-all duration-300 hover:bg-[#0058d9] hover:shadow-[0_0_36px_rgba(0,103,255,0.55)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0067FF]"
+						>
+							Let&apos;s Discuss Your Vision
+						</a>
+						<a href="#services" class="btn-secondary px-7 py-3.5">
+							Explore Our Services
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Trust banner -->
+		<section class="border-y border-theme py-10 sm:py-12" aria-label="Trusted by leading teams">
+			<div class="page-container">
+				<p class="mb-8 text-center text-xs font-medium uppercase tracking-[0.2em] text-muted">
+					Trusted by teams who ship
+				</p>
+				<ul
+					class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-14 md:gap-x-16"
+					role="list"
+				>
+					{
+						trustLogos.map((logo) => (
+							<li>
+								<span
+									class="block font-[family-name:var(--font-display)] text-sm font-semibold tracking-tight text-slate-500 opacity-50 grayscale sm:text-base"
+									aria-hidden="true"
+								>
+									{logo.name}
+								</span>
+								<span class="sr-only">{logo.name}</span>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</section>
+
+		<!-- Services bento -->
+		<section id="services" class="py-20 sm:py-28 md:py-32 lg:py-36">
+			<div class="page-container">
+				<div class="mx-auto mb-14 max-w-2xl text-center md:mb-16">
+					<h2
+						class="font-[family-name:var(--font-display)] text-heading text-3xl font-semibold tracking-tight md:text-4xl"
+					>
+						Four ways we move your business forward
+					</h2>
+					<p class="text-body mt-4">
+						Each service maps to a real outcome: launch faster, automate work, deploy AI, and scale on AWS.
+					</p>
+				</div>
+
+				<div class="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:gap-8">
+					{
+						services.map((service) => (
+							<a
+								href={service.href}
+								class="service-card card-glass group relative flex flex-col overflow-hidden p-8 transition-all duration-500 hover:border-[#0067FF]/50 sm:p-9"
+							>
+								<div
+									class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+									style="background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 103, 255, 0.14), transparent 70%);"
+									aria-hidden="true"
+								/>
+								<div class="relative flex flex-1 flex-col">
+									<h3 class="font-[family-name:var(--font-display)] text-heading text-xl font-semibold tracking-tight sm:text-2xl">
+										{service.title}
+									</h3>
+									<p class="text-body mt-4 flex-1 text-sm leading-relaxed sm:text-base">
+										{service.description}
+									</p>
+									<span class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#0067FF] transition-colors duration-300 group-hover:text-[#3d8fff]">
+										Learn more
+										<svg
+											class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											aria-hidden="true"
+										>
+											<path d="M5 12h14M13 6l6 6-6 6" />
+										</svg>
+									</span>
+								</div>
+							</a>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<!-- Who we help -->
+		<section id="who-we-help" class="border-t border-theme py-20 sm:py-28">
+			<div class="page-container">
+				<div class="mx-auto max-w-2xl text-center">
+					<h2
+						class="font-[family-name:var(--font-display)] text-heading text-3xl font-semibold tracking-tight md:text-4xl"
+					>
+						Built for leaders who need results
+					</h2>
+					<p class="text-body mt-4">
+						You bring the business problem. We bring senior engineers who have shipped this before.
+					</p>
+				</div>
+				<ul class="mt-14 grid gap-6 md:grid-cols-3 md:gap-8" role="list">
+					{
+						audiences.map((item) => (
+							<li>
+								<a
+									href={item.href}
+									class="audience-card card-glass group flex h-full flex-col p-8 transition-all duration-300 hover:border-[#0067FF]/40"
+								>
+									<h3 class="font-[family-name:var(--font-display)] text-heading text-lg font-semibold group-hover:text-[#0067FF] dark:group-hover:text-[#3d8fff]">
+										{item.title}
+									</h3>
+									<p class="text-body mt-3 flex-1 text-sm leading-relaxed">{item.description}</p>
+									<span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#0067FF]">
+										Learn more
+										<svg
+											class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											aria-hidden="true"
+										>
+											<path d="M5 12h14M13 6l6 6-6 6" />
+										</svg>
+									</span>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</section>
+
+		<!-- How we work -->
+		<section class="border-t border-theme surface-muted py-20 sm:py-28">
+			<div class="page-container">
+				<div class="mx-auto max-w-2xl text-center">
+					<h2
+						class="font-[family-name:var(--font-display)] text-heading text-3xl font-semibold tracking-tight md:text-4xl"
+					>
+						A clear path from idea to production
+					</h2>
+					<p class="text-body mt-4">
+						No black boxes. You see working software every week and know exactly what comes next.
+					</p>
+				</div>
+				<ol class="mt-14 grid gap-8 md:grid-cols-3 md:gap-10" role="list">
+					{
+						processSteps.map((item) => (
+							<li class="relative">
+								<p class="font-[family-name:var(--font-display)] text-4xl font-bold text-[#0067FF]/30">
+									{item.step}
+								</p>
+								<h3 class="text-heading mt-2 font-[family-name:var(--font-display)] text-xl font-semibold">
+									{item.title}
+								</h3>
+								<p class="text-body mt-3 text-sm leading-relaxed">{item.description}</p>
+							</li>
+						))
+					}
+				</ol>
+			</div>
+		</section>
+
+		<!-- Outcomes -->
+		<section class="border-t border-theme py-20 sm:py-28">
+			<div class="page-container">
+				<div class="mx-auto max-w-2xl text-center">
+					<h2
+						class="font-[family-name:var(--font-display)] text-heading text-3xl font-semibold tracking-tight md:text-4xl"
+					>
+						What you get when we partner
+					</h2>
+					<p class="text-body mt-4">
+						Technology should reduce risk and unlock growth. These are the results clients hire us for.
+					</p>
+				</div>
+				<ul class="mt-14 grid gap-5 sm:grid-cols-2 lg:gap-6" role="list">
+					{
+						outcomes.map((item) => (
+							<li class="card-glass flex gap-4 p-6 sm:p-7">
+								<span
+									class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#0067FF]/15 text-[#0067FF]"
+									aria-hidden="true"
+								>
+									<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+										<path d="M20 6 9 17l-5-5" />
+									</svg>
+								</span>
+								<div>
+									<h3 class="font-[family-name:var(--font-display)] text-heading text-base font-semibold sm:text-lg">
+										{item.title}
+									</h3>
+									<p class="text-body mt-2 text-sm leading-relaxed">{item.description}</p>
+								</div>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</section>
+
+		<!-- Stack -->
+		<section class="border-t border-theme py-16 sm:py-20">
+			<div class="page-container text-center">
+				<p class="text-sm font-medium text-muted">Core stack</p>
+				<ul class="mt-6 flex flex-wrap items-center justify-center gap-3" role="list">
+					{
+						['React', 'Next.js', 'TypeScript', 'Python', 'AWS', 'LLMs', 'Kubernetes'].map((tech) => (
+							<li>
+								<span class="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200">
+									{tech}
+								</span>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</section>
+
+		<!-- CTA (no form) -->
+		<section class="border-t border-theme surface-muted py-20 sm:py-28 md:py-32">
+			<div class="page-container">
+				<div class="mx-auto max-w-2xl text-center">
+					<h2
+						class="font-[family-name:var(--font-display)] text-heading text-3xl font-semibold tracking-tight md:text-4xl"
+					>
+						Ready to turn your vision into shipped software?
+					</h2>
+					<p class="text-body mt-5 text-lg">
+						Tell us what you are building. We will reply within one business day with a practical next step.
+					</p>
+					<div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							href="/contact"
+							class="inline-flex items-center justify-center rounded-full bg-[#0067FF] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_0_28px_rgba(0,103,255,0.45)] transition-all duration-300 hover:bg-[#0058d9] hover:shadow-[0_0_36px_rgba(0,103,255,0.55)]"
+						>
+							Let&apos;s Discuss Your Vision
+						</a>
+						<a href="#services" class="btn-secondary px-7 py-3.5">
+							Explore Our Services
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</BaseLayout>
+
+<style>
+	.service-card:focus-visible,
+	.audience-card:focus-visible {
+		outline: 2px solid #0067ff;
+		outline-offset: 2px;
+	}
+</style>

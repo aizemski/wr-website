@@ -1,5 +1,5 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
-
-export const SITE_TITLE = 'Astro Blog';
-export const SITE_DESCRIPTION = 'Welcome to my website!';
+export const SITE_TITLE = 'White Raven';
+export const SITE_URL = 'https://whiteraven.app';
+export const CONTACT_EMAIL = 'hello@whiteraven.app';
+export const SITE_DESCRIPTION =
+	'White Raven builds web apps, AI systems, and AWS infrastructure for teams that need to ship faster and grow revenue.';

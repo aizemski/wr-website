@@ -1,0 +1,74 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+import BlogHeroImage from './BlogHeroImage.astro';
+import { getReadingTime } from '../utils/blog';
+
+interface Props {
+	post: CollectionEntry<'blog'>;
+	featured?: boolean;
+}
+
+const { post, featured = false } = Astro.props;
+const { title, description, pubDate, heroImage, tags } = post.data;
+const readingTime = getReadingTime(post.body ?? '');
+---
+
+<article
+	class:list={[
+		'group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-surface-elevated shadow-sm transition-all duration-500 hover:-translate-y-0.5 hover:border-[#0067FF]/35 hover:shadow-[0_12px_40px_rgba(0,103,255,0.12)] dark:bg-slate-900/60 dark:shadow-none',
+		featured ? 'md:col-span-2 md:grid md:grid-cols-2 md:gap-0' : '',
+	]}
+	data-tags={tags.join(',')}
+>
+	<a
+		href={`/blog/${post.id}/`}
+		class:list={[
+			'block overflow-hidden',
+			featured ? 'md:h-full' : 'aspect-[16/10]',
+		]}
+	>
+		<div class:list={['relative h-full w-full bg-slate-100 dark:bg-slate-800/50', featured ? 'min-h-[220px] md:min-h-full' : '']}>
+			{
+				heroImage ? (
+					<div class="h-full w-full transition-transform duration-700 group-hover:scale-[1.02]">
+						<BlogHeroImage src={heroImage} alt="" />
+					</div>
+				) : (
+					<div class="flex h-full min-h-[180px] items-center justify-center bg-gradient-to-br from-[#0067FF]/10 to-slate-100 dark:to-slate-900">
+						<span class="font-[family-name:var(--font-display)] text-4xl font-semibold text-slate-300 dark:text-white/20">WR</span>
+					</div>
+				)
+			}
+		</div>
+	</a>
+
+	<div class:list={['flex flex-1 flex-col p-6', featured ? 'md:justify-center md:p-10' : '']}>
+		<div class="mb-3 flex flex-wrap gap-2">
+			{tags.slice(0, featured ? 4 : 2).map((tag) => (
+				<span class="rounded-full bg-[#0067FF]/10 px-2.5 py-0.5 text-xs font-medium text-[#0067FF] ring-1 ring-[#0067FF]/25 dark:text-[#3d8fff]">
+					{tag}
+				</span>
+			))}
+		</div>
+
+		<h2 class:list={['font-[family-name:var(--font-display)] font-semibold text-heading', featured ? 'text-2xl md:text-3xl' : 'text-lg']}>
+			<a
+				href={`/blog/${post.id}/`}
+				class="transition-colors duration-300 hover:text-[#0067FF] dark:hover:text-[#3d8fff]"
+			>
+				{title}
+			</a>
+		</h2>
+
+		<p class:list={['text-body mt-3 line-clamp-2 text-sm leading-relaxed', featured ? 'md:line-clamp-3 md:text-base' : '']}>
+			{description}
+		</p>
+
+		<div class="mt-auto flex items-center gap-3 pt-5 text-xs text-muted">
+			<FormattedDate date={pubDate} />
+			<span aria-hidden="true">·</span>
+			<span>{readingTime} min read</span>
+		</div>
+	</div>
+</article>

@@ -1,0 +1,149 @@
+---
+import AudiencePageShell from '../../components/AudiencePageShell.astro';
+---
+
+<AudiencePageShell
+	title="Software for Startup Founders"
+	description="White Raven helps startup founders ship MVPs and scale products with React, Python, and AWS—without sacrificing quality or burning runway on rework."
+	eyebrow="Startup founders"
+	headline="Ship an MVP your first customers will actually use."
+	subheadline="You need to prove the idea before runway runs out. We build production-ready products in weeks—with architecture that survives your next funding round, not a rewrite six months later."
+	painIntro="Founders call us when speed and credibility both matter. These pressures show up again and again."
+	painPoints={[
+		{
+			title: 'Investors want traction, not wireframes',
+			description:
+				'Demos impress in meetings but fall apart under real users. You need something people can sign up for and pay for—not a clickable prototype.',
+		},
+		{
+			title: 'Every hire is expensive',
+			description:
+				'You cannot afford a full senior team yet, but freelancers and no-code stacks create debt you will pay for after product-market fit.',
+		},
+		{
+			title: 'Technical choices feel permanent',
+			description:
+				'Pick the wrong stack or skip foundations early, and your Series A hire spends a year untangling instead of shipping features.',
+		},
+	]}
+	outcomesIntro="We optimize for learning fast and building once. Founders typically gain:"
+	outcomes={[
+		{
+			title: 'A product you can put in front of users',
+			description:
+				'Auth, core flows, and deployable infrastructure—not a sandbox that never leaves localhost.',
+		},
+		{
+			title: 'Honest visibility into progress',
+			description:
+				'Weekly demos and clear milestones so you can update investors and adjust scope without guessing.',
+		},
+		{
+			title: 'Architecture that scales with traction',
+			description:
+				'React, Next.js, and AWS patterns chosen so your first engineering hires extend the codebase instead of replacing it.',
+		},
+		{
+			title: 'AI only where it helps the story',
+			description:
+				'LLM features scoped to real user value—so your pitch matches what ships, and you avoid a science project on the side.',
+		},
+	]}
+	highlights={[
+		{
+			title: 'Market-ready MVPs',
+			description:
+				'Lean scope, weekly demos, and a codebase structured for what comes after launch day. No throwaway prototypes dressed up as products.',
+		},
+		{
+			title: 'Founder-friendly delivery',
+			description:
+				'Clear milestones, honest timelines, and direct access to senior engineers. You always know what shipped and what is next.',
+		},
+		{
+			title: 'Technical decisions that scale',
+			description:
+				'React, Next.js, and AWS choices made for growth. Avoid rewrites when traction hits and the feature list doubles.',
+		},
+		{
+			title: 'AI when it earns its place',
+			description:
+				'LLM features and automation scoped to real user value, not demo fluff. We help you ship AI that supports the business case.',
+		},
+	]}
+	process={[
+		{
+			step: '1',
+			title: 'Align on the hypothesis',
+			description:
+				'We define the smallest release that tests your core assumption—who it is for, what they do, and how you will know it worked.',
+		},
+		{
+			step: '2',
+			title: 'Build and demo weekly',
+			description:
+				'You see working software every week. Priorities shift when customer calls change the plan, and we adjust without drama.',
+		},
+		{
+			step: '3',
+			title: 'Launch and instrument',
+			description:
+				'We deploy to production, add analytics and error tracking, and make sure you can observe real usage from day one.',
+		},
+		{
+			step: '4',
+			title: 'Set up your next hire',
+			description:
+				'Docs, pairing, and a clean repo so your first full-time engineer—or the next round of funding—starts ahead, not behind.',
+		},
+	]}
+	goodFit={[
+		'You are pre-seed through Series A and need an MVP or v1 in the next 2–3 months.',
+		'You have design direction or strong product instinct but no senior engineering bench yet.',
+		'Your current product is held together with scripts and no-code—and cracks are showing under real users.',
+		'Investors or design partners are asking for AI features and you need them built responsibly, not as a hackathon.',
+	]}
+	relatedServices={[
+		{
+			href: '/services/product-engineering',
+			label: 'Product Engineering',
+			description: 'High-velocity MVP development and architecture modernization.',
+		},
+		{
+			href: '/services/applied-ai',
+			label: 'Applied AI',
+			description: 'LLM integrations and prototypes that graduate to production.',
+		},
+		{
+			href: '/services/cloud-architecture',
+			label: 'Cloud & DevOps',
+			description: 'AWS foundations that scale when traffic spikes after launch.',
+		},
+	]}
+	relatedAudiences={[
+		{ href: '/for/operations-leaders', label: 'Operations leaders' },
+		{ href: '/for/enterprise-engineering', label: 'Enterprise engineering' },
+	]}
+	faq={[
+		{
+			question: 'Can you work with our existing designer or product person?',
+			answer:
+				'Yes. We plug into your rhythm—Figma handoffs, Notion specs, or weekly product calls—and keep design and engineering aligned.',
+		},
+		{
+			question: 'What if we already started with a dev shop or freelancer?',
+			answer:
+				'We audit what exists, recommend keep vs. rebuild honestly, and often rescue good work while fixing what blocks scale.',
+		},
+		{
+			question: 'How do you price MVP work?',
+			answer:
+				'Fixed phases after discovery—so you know cost before we write code. Scope changes are visible, not buried in hourly surprises.',
+		},
+		{
+			question: 'Will you take equity instead of cash?',
+			answer:
+				'We are selective about equity arrangements and discuss them case by case. Most founders start with a paid discovery and first build phase.',
+		},
+	]}
+/>

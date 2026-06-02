@@ -1,141 +1,252 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+@import 'tailwindcss';
+@config '../../tailwind.config.mjs';
 
-:root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
-	--box-shadow:
-		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-		0 16px 32px rgba(var(--gray), 33%);
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+	--font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+	--font-display: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+	--color-brand: #0067ff;
+	--color-brand-hover: #0058d9;
+	--color-accent: #0067ff;
+	--color-accent-muted: #3d8fff;
+	--color-surface: #f8fafc;
+	--color-surface-elevated: #ffffff;
+	--color-foreground: #0f172a;
+	--color-muted: #475569;
+	--color-border: #cbd5e1;
+	--color-border-strong: #94a3b8;
 }
-body {
-	font-family: var(--font-atkinson);
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
-	background-size: 100% 600px;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	color: rgb(var(--gray-dark));
-	font-size: 20px;
-	line-height: 1.7;
-}
-main {
-	width: 720px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 3em 1em;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
-	line-height: 1.2;
-}
-h1 {
-	font-size: 3.052em;
-}
-h2 {
-	font-size: 2.441em;
-}
-h3 {
-	font-size: 1.953em;
-}
-h4 {
-	font-size: 1.563em;
-}
-h5 {
-	font-size: 1.25em;
-}
-strong,
-b {
-	font-weight: 700;
-}
-a {
-	color: var(--accent);
-}
-a:hover {
-	color: var(--accent);
-}
-p {
-	margin-bottom: 1em;
-}
-.prose p {
-	margin-bottom: 2em;
-}
-textarea {
-	width: 100%;
-	font-size: 16px;
-}
-input {
-	font-size: 16px;
-}
-table {
-	width: 100%;
-}
-img {
-	max-width: 100%;
-	height: auto;
-	border-radius: 8px;
-}
-code {
-	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
-}
-pre {
-	padding: 1.5em;
-	border-radius: 8px;
-}
-pre > code {
-	all: unset;
-}
-blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0;
-	font-size: 1.333em;
-}
-hr {
-	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
-}
-@media (max-width: 720px) {
+
+@layer base {
+	:root {
+		color-scheme: light;
+		--mesh-1: rgba(0, 103, 255, 0.1);
+		--mesh-2: rgba(0, 103, 255, 0.06);
+		--mesh-3: rgba(148, 163, 184, 0.08);
+		--nav-bg: rgba(248, 250, 252, 0.82);
+		--nav-border: rgba(226, 232, 240, 0.9);
+		--footer-bg: rgba(241, 245, 249, 0.75);
+	}
+
+	html.dark {
+		color-scheme: dark;
+		--color-surface: #020617;
+		--color-surface-elevated: #0f172a;
+		--color-foreground: #f1f5f9;
+		--color-muted: #94a3b8;
+		--color-border: #1e293b;
+		--color-border-strong: #334155;
+		--mesh-1: rgba(0, 103, 255, 0.14);
+		--mesh-2: rgba(0, 103, 255, 0.08);
+		--mesh-3: rgba(15, 23, 42, 0.5);
+		--nav-bg: rgba(2, 6, 23, 0.82);
+		--nav-border: rgba(30, 41, 59, 0.85);
+		--footer-bg: rgba(15, 23, 42, 0.65);
+	}
+
+	html {
+		@apply scroll-smooth;
+	}
+
 	body {
-		font-size: 18px;
+		@apply min-h-screen bg-surface font-sans text-foreground antialiased;
+		font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 	}
-	main {
-		padding: 1em;
+
+	html.dark body {
+		@apply bg-slate-950;
+	}
+
+	::selection {
+		background: rgba(0, 103, 255, 0.35);
+		@apply text-foreground;
 	}
 }
 
-.sr-only {
-	border: 0;
-	padding: 0;
-	margin: 0;
-	position: absolute !important;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
-	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
-	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
-	white-space: nowrap;
+@layer components {
+	.mesh-bg {
+		background-color: var(--color-surface);
+		background-image:
+			radial-gradient(ellipse 80% 50% at 50% -20%, var(--mesh-1), transparent),
+			radial-gradient(ellipse 60% 40% at 100% 0%, var(--mesh-2), transparent),
+			radial-gradient(ellipse 50% 50% at 0% 100%, var(--mesh-3), transparent);
+	}
+
+	html.dark .mesh-bg {
+		background-color: rgb(2 6 23);
+	}
+
+	.page-container {
+		@apply mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8;
+	}
+
+	.section-padding {
+		@apply py-16 sm:py-20 md:py-28 lg:py-32;
+	}
+
+	.display-heading {
+		font-family: var(--font-display);
+		@apply font-semibold tracking-tight text-foreground;
+	}
+
+	.btn-primary {
+		@apply inline-flex items-center justify-center gap-2 rounded-full bg-[#0067FF] px-6 py-3 text-sm font-semibold text-white shadow-[0_0_24px_rgba(0,103,255,0.4)] transition-all duration-300 hover:bg-[#0058d9] hover:shadow-[0_0_32px_rgba(0,103,255,0.5)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0067FF];
+	}
+
+	.btn-secondary {
+		@apply inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface-elevated/60 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur-sm transition-all duration-300 hover:border-[#0067FF]/40 hover:bg-surface-elevated focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0067FF];
+	}
+
+	html.dark .btn-secondary {
+		@apply border-white/20 bg-white/5 text-slate-200 hover:bg-white/10 hover:text-white;
+	}
+
+	.glass-nav {
+		background: var(--nav-bg);
+		border-color: var(--nav-border);
+		@apply border-b backdrop-blur-md;
+	}
+
+	.glass-footer {
+		background: var(--footer-bg);
+		border-color: var(--nav-border);
+		@apply border-t backdrop-blur-md;
+	}
+
+	.skip-link {
+		@apply sr-only;
+	}
+
+	.skip-link:focus {
+		position: fixed;
+		left: 1rem;
+		top: 1rem;
+		z-index: 100;
+		height: auto;
+		width: auto;
+		overflow: visible;
+		clip: auto;
+		clip-path: none;
+		white-space: normal;
+		@apply rounded-lg bg-[#0067FF] px-4 py-2 text-sm font-medium text-white;
+	}
+
+	.page-shell {
+		@apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+	}
+
+	.card-glass {
+		@apply rounded-2xl border border-slate-300/80 bg-white shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.04] dark:shadow-none;
+	}
+
+	.text-body {
+		@apply text-slate-700 dark:text-slate-300;
+	}
+
+	.text-heading {
+		@apply text-slate-950 dark:text-white;
+	}
+
+	.text-muted-theme {
+		@apply text-slate-600 dark:text-slate-400;
+	}
+
+	.border-theme {
+		@apply border-slate-300/70 dark:border-white/10;
+	}
+
+	.surface-muted {
+		@apply bg-slate-100/80 dark:bg-slate-900/50;
+	}
+
+	.badge-pill {
+		@apply inline-flex items-center gap-2 rounded-full border border-slate-300/80 bg-white px-4 py-1.5 text-xs font-medium text-slate-700 backdrop-blur-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-300;
+	}
+
+	.blog-prose {
+		@apply prose prose-slate max-w-none;
+		--tw-prose-body: rgb(51 65 85);
+		--tw-prose-headings: rgb(2 6 23);
+		--tw-prose-links: #0067ff;
+		--tw-prose-quote-borders: #0067ff;
+	}
+
+	html.dark .blog-prose {
+		@apply prose-invert;
+		--tw-prose-body: rgb(203 213 225);
+		--tw-prose-headings: rgb(248 250 252);
+		--tw-prose-links: #3d8fff;
+	}
+
+	.blog-prose :where(a):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+		@apply text-[#0067FF] no-underline hover:underline dark:text-[#3d8fff];
+	}
+
+	.blog-prose :where(a.btn-primary):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+		@apply text-white no-underline hover:text-white hover:no-underline;
+	}
+
+	.blog-prose :where(a.btn-secondary):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+		@apply text-foreground no-underline hover:no-underline;
+	}
+
+	.blog-prose :where(code):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+		@apply rounded-md bg-slate-100 px-1.5 py-0.5 text-slate-800 dark:bg-slate-800 dark:text-slate-200;
+	}
+
+	.blog-prose :where(blockquote):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+		@apply border-l-[#0067FF] bg-[#0067FF]/5 py-1 pl-6 text-slate-700 dark:text-slate-200;
+	}
+}
+
+@layer utilities {
+	.sr-only {
+		@apply absolute h-px w-px overflow-hidden border-0 p-0;
+		clip: rect(0, 0, 0, 0);
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fade-out {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+::view-transition-old(root) {
+	animation: fade-out 0.2s ease-out both;
+}
+
+::view-transition-new(root) {
+	animation: fade-in 0.25s ease-in both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation: none;
+	}
+
+	.btn-primary,
+	.btn-secondary,
+	.group:hover *,
+	[class*='hover:-translate-y'] {
+		transition: none !important;
+		transform: none !important;
+	}
 }

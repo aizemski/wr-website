@@ -1,0 +1,144 @@
+---
+import ServicePageShell from '../../components/ServicePageShell.astro';
+---
+
+<ServicePageShell
+	title="Workflow Automation & Custom Portals"
+	description="PWAs, business dashboards, ETL pipelines, and automated reporting for operations managers and growing businesses."
+	headline="Run your business on software built for how you actually work."
+	audience="For operations managers and small businesses"
+	subheadline="Spreadsheets and email chains slow growth. We build portals, field apps, and data pipelines that digitize operations—so your team has one source of truth and reports assemble themselves."
+	painIntro="Operational software should match the process, not the other way around. Sound familiar?"
+	painPoints={[
+		{
+			title: 'Critical work lives in spreadsheets',
+			description:
+				'Version conflicts, broken formulas, and “who has the latest file?” waste hours every week—and errors slip through to customers.',
+		},
+		{
+			title: 'Field teams are disconnected',
+			description:
+				'Crews capture data on paper or personal phones, then someone re-keys it at the office. Delays and mistakes follow.',
+		},
+		{
+			title: 'Reporting is manual labor',
+			description:
+				'Every Friday someone copies numbers into slides and PDFs. Leadership waits days for data that was already stale on Monday.',
+		},
+	]}
+	outcomesIntro="We replace friction with systems people actually use. Clients typically see outcomes like these."
+	outcomes={[
+		{
+			title: 'One place to run the operation',
+			description:
+				'Role-based portals show each team what they need—no digging through shared drives or CC chains.',
+		},
+		{
+			title: 'Data that syncs itself',
+			description:
+				'Scheduled ETL and integrations pull from web sources and legacy systems so dashboards update without manual exports.',
+		},
+		{
+			title: 'Field-ready tools',
+			description:
+				'Offline-capable PWAs let crews work without signal and sync when they are back in range.',
+		},
+		{
+			title: 'Reports on autopilot',
+			description:
+				'PDFs and client updates generate on cadence. Your team reviews exceptions—not every line item.',
+		},
+	]}
+	highlights={[
+		{
+			title: 'Offline-capable field systems',
+			description:
+				'PWAs for remote operations with sync when connectivity returns. Built for crews and teams who cannot rely on stable Wi-Fi.',
+			tools: 'PWAs · service workers · offline sync',
+		},
+		{
+			title: 'Custom business dashboards',
+			description:
+				'Multi-tenant management platforms with role-based access, live metrics, and workflows aligned to your org structure.',
+			tools: 'React · Node.js · multi-tenant platforms',
+		},
+		{
+			title: 'Data scraping & ETL pipelines',
+			description:
+				'Ingest data from web sources and legacy systems on schedule. Clean, transform, and deliver into the systems you trust.',
+			tools: 'Python · Puppeteer · BeautifulSoup',
+		},
+		{
+			title: 'Automated reporting operations',
+			description:
+				'PDF generation and client communications on cadence. Stop assembling reports by hand every week.',
+			tools: 'PDF automation · scheduled jobs · client comms',
+		},
+	]}
+	process={[
+		{
+			step: '1',
+			title: 'Map the real workflow',
+			description:
+				'We shadow how work happens today—forms, approvals, handoffs—and design software around that, not a generic template.',
+		},
+		{
+			step: '2',
+			title: 'Pilot with one team',
+			description:
+				'Launch a focused portal or pipeline for a single unit. Prove adoption and ROI before rolling out company-wide.',
+		},
+		{
+			step: '3',
+			title: 'Connect your data sources',
+			description:
+				'Wire ERPs, spreadsheets, email, and external sites into a reliable pipeline with alerts when jobs fail.',
+		},
+		{
+			step: '4',
+			title: 'Train and expand',
+			description:
+				'Short training for operators, then phased rollout to more regions or departments with the same core platform.',
+		},
+	]}
+	goodFit={[
+		'You outgrew spreadsheets but off-the-shelf SaaS does not match how your business runs.',
+		'Field or distributed teams need mobile-friendly tools that work offline part of the day.',
+		'You pull data from vendor portals, websites, or legacy DBs and need it in one dashboard.',
+		'Client or board reporting eats a full day every week and should take minutes.',
+	]}
+	relatedServices={[
+		{
+			href: '/services/applied-ai',
+			label: 'Applied AI',
+			description: 'Add document search, triage, or validation on top of the data you centralize.',
+		},
+		{
+			href: '/services/cloud-architecture',
+			label: 'Cloud & DevOps',
+			description: 'Host portals and pipelines on reliable AWS infrastructure with monitoring built in.',
+		},
+	]}
+	faq={[
+		{
+			question: 'Can you replace our ERP?',
+			answer:
+				'Usually no—and we do not try. We integrate with systems you already pay for and build the layer that makes them usable for your operators.',
+		},
+		{
+			question: 'Will our non-technical staff adopt it?',
+			answer:
+				'Adoption is a design requirement. We test flows with real users during the pilot and simplify until daily tasks take fewer clicks than the old spreadsheet.',
+		},
+		{
+			question: 'How do you handle sensitive client data?',
+			answer:
+				'Role-based access, audit logs, and encryption in transit and at rest. We align with your compliance needs before writing code.',
+		},
+		{
+			question: 'What if our process changes next quarter?',
+			answer:
+				'Portals are built modularly—forms, approvals, and reports can evolve without rebuilding from scratch.',
+		},
+	]}
+/>

@@ -1,0 +1,149 @@
+---
+import AudiencePageShell from '../../components/AudiencePageShell.astro';
+---
+
+<AudiencePageShell
+	title="Software for Enterprise Engineering Leaders"
+	description="White Raven modernizes legacy systems and cloud platforms for enterprise teams—without freezing the product roadmap or failing security review."
+	eyebrow="Enterprise engineering leaders"
+	headline="Modernize platforms without freezing the roadmap."
+	subheadline="Legacy debt and fragile infrastructure slow every initiative. We modernize React apps, harden AWS environments, and improve delivery pipelines while your teams keep shipping customer value."
+	painIntro="Enterprise engineering leaders balance risk, compliance, and speed. These tensions drive most of our engagements."
+	painPoints={[
+		{
+			title: 'Modernization is stuck in committee',
+			description:
+				'Everyone agrees the stack is aging, but big-bang rewrites look too risky. Meanwhile, every feature still fights the same legacy constraints.',
+		},
+		{
+			title: 'Releases still feel like events',
+			description:
+				'Manual steps, flaky pipelines, and staging that does not match production mean deploys get delayed—and incidents get blamed on the wrong team.',
+		},
+		{
+			title: 'Security review slows delivery',
+			description:
+				'IAM sprawl, undocumented secrets, and missing observability mean audits find gaps—and engineering pauses to patch instead of building.',
+		},
+	]}
+	outcomesIntro="We reduce risk by shipping incrementally and documenting what changes. Engineering orgs typically gain:"
+	outcomes={[
+		{
+			title: 'Continuous delivery without drama',
+			description:
+				'Automated pipelines, tested rollbacks, and environments that mirror production so releases become routine.',
+		},
+		{
+			title: 'Architecture that evolves in place',
+			description:
+				'Strangler migrations and clear module boundaries let you modernize React and APIs without a feature freeze.',
+		},
+		{
+			title: 'Cloud spend and scale under control',
+			description:
+				'Right-sized serverless and event-driven AWS patterns that handle load without runaway bills or idle capacity.',
+		},
+		{
+			title: 'Evidence for security and leadership',
+			description:
+				'IAM baselines, logging, and dashboards that satisfy reviewers and help you fix issues before users report them.',
+		},
+	]}
+	highlights={[
+		{
+			title: 'Incremental modernization',
+			description:
+				'Strangler patterns and phased migrations that cut risk. Users keep working while architecture improves underneath.',
+		},
+		{
+			title: 'Resilient cloud foundations',
+			description:
+				'Serverless and event-driven AWS designs sized for real load. Security and compliance baked in, not bolted on late.',
+		},
+		{
+			title: 'CI/CD teams can own',
+			description:
+				'Pipelines, containers, and release practices your engineers maintain. Faster, safer deploys with less firefighting.',
+		},
+		{
+			title: 'Observability that matters',
+			description:
+				'Logging, metrics, and alerts tied to business impact. Find problems before they become customer incidents.',
+		},
+	]}
+	process={[
+		{
+			step: '1',
+			title: 'Assess and prioritize',
+			description:
+				'We review architecture, pipelines, costs, and incident history. You get a roadmap ranked by risk and business impact—not a generic cloud checklist.',
+		},
+		{
+			step: '2',
+			title: 'Stabilize the critical path',
+			description:
+				'Fix deploys, secrets, and monitoring on the services that matter most. Quick wins build confidence before larger moves.',
+		},
+		{
+			step: '3',
+			title: 'Modernize incrementally',
+			description:
+				'Introduce strangler routes, infrastructure as code, and API contracts your teams can adopt service by service.',
+		},
+		{
+			step: '4',
+			title: 'Enable internal teams',
+			description:
+				'Pairing, runbooks, and standards so your engineers operate and extend what we built without long-term dependency.',
+		},
+	]}
+	goodFit={[
+		'You own a React or web platform that needs modernization without stopping feature delivery.',
+		'AWS is your cloud but CI/CD, IAM, or observability lag behind product ambitions.',
+		'Security or compliance review is coming and infrastructure needs to catch up fast.',
+		'Incidents and firefighting consume senior engineers who should be driving the roadmap.',
+	]}
+	relatedServices={[
+		{
+			href: '/services/product-engineering',
+			label: 'Product Engineering',
+			description: 'Enterprise architecture modernization and robust APIs.',
+		},
+		{
+			href: '/services/cloud-architecture',
+			label: 'Cloud & DevOps',
+			description: 'AWS serverless, CI/CD, security, and observability.',
+		},
+		{
+			href: '/services/applied-ai',
+			label: 'Applied AI',
+			description: 'Governed LLM and ML systems that pass enterprise scrutiny.',
+		},
+	]}
+	relatedAudiences={[
+		{ href: '/for/startup-founders', label: 'Startup founders' },
+		{ href: '/for/operations-leaders', label: 'Operations leaders' },
+	]}
+	faq={[
+		{
+			question: 'How do you work with our existing engineering teams?',
+			answer:
+				'We embed as a senior squad for defined outcomes—modernization, platform, or pipeline—and pair daily so knowledge stays in-house.',
+		},
+		{
+			question: 'Can you meet our security and compliance requirements?',
+			answer:
+				'Yes. We scope IAM, logging, data handling, and deployment constraints up front and document controls for your reviewers.',
+		},
+		{
+			question: 'Do you only work on greenfield projects?',
+			answer:
+				'Most of our enterprise work is brownfield—legacy UIs, tangled APIs, and years of tactical fixes. Incremental change is our default.',
+		},
+		{
+			question: 'What is a realistic timeline for CI/CD improvement?',
+			answer:
+				'Many teams see meaningful gains on the critical service in 4–8 weeks. Deeper platform work follows the prioritized roadmap we agree in assessment.',
+		},
+	]}
+/>

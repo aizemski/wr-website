@@ -5,20 +5,25 @@ type Props = HTMLAttributes<'a'>;
 
 const { href, class: className, ...props } = Astro.props;
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
-const subpath = pathname.match(/[^\/]+/g);
-const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+const normalizedPath = pathname.replace(/\/$/, '') || '/';
+const hrefString = href ?? '/';
+const hasHash = hrefString.includes('#');
+const hrefPath = hrefString.split('#')[0].replace(/\/$/, '') || '/';
+
+const isActive =
+	!hasHash &&
+	(hrefPath === normalizedPath ||
+		(hrefPath !== '/' && normalizedPath.startsWith(`${hrefPath}/`)));
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
+<a
+	href={href}
+	class:list={[
+		'rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition-colors duration-300 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white',
+		{ 'bg-[#0067FF]/10 text-[#0067FF] ring-1 ring-[#0067FF]/30 dark:bg-[#0067FF]/15 dark:text-white dark:ring-[#0067FF]/40': isActive },
+		className,
+	]}
+	{...props}
+>
 	<slot />
 </a>
-<style>
-	a {
-		display: inline-block;
-		text-decoration: none;
-	}
-	a.active {
-		font-weight: bolder;
-		text-decoration: underline;
-	}
-</style>

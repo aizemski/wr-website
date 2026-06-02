@@ -1,0 +1,144 @@
+---
+import ServicePageShell from '../../components/ServicePageShell.astro';
+---
+
+<ServicePageShell
+	title="Applied AI & Machine Learning"
+	description="LLM integrations, RAG systems, predictive analytics, and production AI guardrails for operations teams and startups."
+	headline="Put AI to work in the workflows your team runs every day."
+	audience="For operations managers and startups"
+	subheadline="You need AI that saves hours, not slide decks. We prototype fast, harden retrieval and monitoring, and deploy models your operators can trust—grounded in your data, with guardrails built in."
+	painIntro="AI pilots stall when they skip the messy middle. These blockers show up on almost every engagement."
+	painPoints={[
+		{
+			title: 'Demos that never reach production',
+			description:
+				'A Streamlit proof impressed leadership, but nobody owns security, evaluation, or how answers get updated when docs change.',
+		},
+		{
+			title: 'Answers you cannot trust',
+			description:
+				'Generic chatbots hallucinate on internal policies. Teams stop using them after one bad customer-facing mistake.',
+		},
+		{
+			title: 'Data science stuck in notebooks',
+			description:
+				'Models work offline but never connect to the ERP, CRM, or ticketing tools where decisions actually happen.',
+		},
+	]}
+	outcomesIntro="We ship AI where it removes real work—and measure it. Typical outcomes look like this."
+	outcomes={[
+		{
+			title: 'Hours back every week',
+			description:
+				'Operators spend less time searching docs, triaging tickets, or reviewing routine cases because AI handles the first pass.',
+		},
+		{
+			title: 'Grounded, auditable answers',
+			description:
+				'RAG pipelines cite sources, log prompts, and flag low-confidence responses before they reach customers.',
+		},
+		{
+			title: 'A path from prototype to prod',
+			description:
+				'Winners graduate from Streamlit to governed APIs with auth, rate limits, and monitoring—not a second project.',
+		},
+		{
+			title: 'Models your team can extend',
+			description:
+				'Python services, clear evaluation sets, and MLOps basics so your data team improves models without a rewrite.',
+		},
+	]}
+	highlights={[
+		{
+			title: 'Generative AI & LLM prototypes',
+			description:
+				'Prove value quickly with ChatGPT APIs, LangChain, and Streamlit. Then graduate winners into governed production services.',
+			tools: 'ChatGPT APIs · LangChain · Streamlit',
+		},
+		{
+			title: 'RAG system implementation',
+			description:
+				'Retrieval-Augmented Generation with tuned chunking, embeddings, and evaluation so answers stay grounded in your knowledge base.',
+			tools: 'Vector stores · embeddings · RAG pipelines',
+		},
+		{
+			title: 'Predictive analytics & NLP',
+			description:
+				'Forecasting, classification, and text intelligence with TensorFlow and PyTorch models your data team can extend.',
+			tools: 'TensorFlow · PyTorch · Python',
+		},
+		{
+			title: 'AI-driven quality control',
+			description:
+				'Automate validation and anomaly detection across legacy data pipelines. Cut manual review without losing accuracy.',
+			tools: 'Pipeline automation · ML validation · MLOps',
+		},
+	]}
+	process={[
+		{
+			step: '1',
+			title: 'Find the workflow worth automating',
+			description:
+				'We interview operators and map where time is lost. If AI is not the right tool, we say so early.',
+		},
+		{
+			step: '2',
+			title: 'Prototype with real data',
+			description:
+				'A working demo in days using your documents or sample records—so stakeholders judge output quality, not architecture diagrams.',
+		},
+		{
+			step: '3',
+			title: 'Evaluate and harden',
+			description:
+				'We build test sets, measure hallucination rates, add human-in-the-loop where needed, and wire auth and logging.',
+		},
+		{
+			step: '4',
+			title: 'Deploy and monitor',
+			description:
+				'Production APIs with dashboards for usage, cost, and drift. You know when to retrain or refresh the knowledge base.',
+		},
+	]}
+	goodFit={[
+		'Support or ops teams drown in repetitive questions that live in PDFs, wikis, or old tickets.',
+		'You want copilots inside internal tools—not another standalone chat tab nobody opens.',
+		'You have historical data and need forecasting, classification, or NLP that runs on a schedule.',
+		'Leadership mandated “AI strategy” but you need engineers who have shipped RAG and LLM apps before.',
+	]}
+	relatedServices={[
+		{
+			href: '/services/workflow-automation',
+			label: 'Workflow Automation',
+			description: 'Connect AI outputs to portals, dashboards, and the systems your team already uses.',
+		},
+		{
+			href: '/services/product-engineering',
+			label: 'Product Engineering',
+			description: 'Embed AI features in customer-facing React apps with proper UX and API design.',
+		},
+	]}
+	faq={[
+		{
+			question: 'Do we need a huge data lake first?',
+			answer:
+				'No. Many RAG projects start with a focused document set—policies, manuals, or ticket exports. We help you define what “good enough” coverage looks like before scaling ingestion.',
+		},
+		{
+			question: 'How do you reduce hallucinations?',
+			answer:
+				'Grounded retrieval, citation in responses, confidence thresholds, and evaluation suites run before each release. We also design flows where humans approve high-risk answers.',
+		},
+		{
+			question: 'Can you use our existing OpenAI or Azure contract?',
+			answer:
+				'Yes. We integrate with your preferred provider and keep keys in your environment where policy requires it.',
+		},
+		{
+			question: 'What about data privacy?',
+			answer:
+				'We scope PII handling up front—redaction, access controls, and retention policies. Architectures can keep sensitive data in your VPC and avoid training on customer content.',
+		},
+	]}
+/>

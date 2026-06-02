@@ -1,0 +1,149 @@
+---
+import AudiencePageShell from '../../components/AudiencePageShell.astro';
+---
+
+<AudiencePageShell
+	title="Software for Operations Leaders"
+	description="White Raven builds dashboards, workflow automation, and data pipelines that operations teams adopt from day one—not shelfware."
+	eyebrow="Operations leaders"
+	headline="Replace manual work with software your team will use."
+	subheadline="Spreadsheets and email chains hide risk and slow decisions. We digitize operations with portals, PWAs, and pipelines built around how your team actually works—not how a generic SaaS vendor imagines it."
+	painIntro="Operations leaders feel the pain when systems do not match the process. These are the complaints we hear first."
+	painPoints={[
+		{
+			title: 'The truth lives in spreadsheets',
+			description:
+				'Every department has a version. Formulas break, access is unclear, and leadership makes calls on numbers nobody fully trusts.',
+		},
+		{
+			title: 'Field teams are out of sync',
+			description:
+				'Data captured on paper or personal phones gets re-keyed at the office. Delays turn into customer complaints and billing errors.',
+		},
+		{
+			title: 'Reporting eats the week',
+			description:
+				'Fridays disappear into PDFs and slide decks. By the time leadership sees the numbers, the week they describe is already over.',
+		},
+	]}
+	outcomesIntro="We build for adoption first—if operators will not use it, it failed. Typical outcomes:"
+	outcomes={[
+		{
+			title: 'One source of truth',
+			description:
+				'Role-based portals replace conflicting exports. Everyone sees the same numbers and status in real time.',
+		},
+		{
+			title: 'Hours back every week',
+			description:
+				'Automated pipelines and scheduled reports free your team to handle exceptions—not retype data.',
+		},
+		{
+			title: 'Tools that work in the field',
+			description:
+				'Offline-capable apps let crews capture work without Wi-Fi and sync when they are back in range.',
+		},
+		{
+			title: 'AI that assists, not distracts',
+			description:
+				'Document search, triage, and validation where they remove real work—not another chatbot tab nobody opens.',
+		},
+	]}
+	highlights={[
+		{
+			title: 'Workflows people adopt',
+			description:
+				'Interfaces designed for daily use, not shelfware. We validate with the people doing the work before we call it done.',
+		},
+		{
+			title: 'Dashboards that drive action',
+			description:
+				'Live metrics, role-based views, and alerts that matter. One source of truth instead of conflicting exports.',
+		},
+		{
+			title: 'Reliable data pipelines',
+			description:
+				'ETL, scraping, and scheduled jobs that keep data fresh. Less manual assembly, fewer errors in reports.',
+		},
+		{
+			title: 'Field-ready tools',
+			description:
+				'Offline-capable PWAs for teams on the move. Sync when connectivity returns without losing work in the field.',
+		},
+	]}
+	process={[
+		{
+			step: '1',
+			title: 'Map how work really happens',
+			description:
+				'We shadow the process—forms, handoffs, approvals—and design around reality, not a vendor template.',
+		},
+		{
+			step: '2',
+			title: 'Pilot with one team',
+			description:
+				'Launch a focused portal or pipeline for a single unit. Prove adoption and ROI before rolling out wider.',
+		},
+		{
+			step: '3',
+			title: 'Connect your systems',
+			description:
+				'Wire ERPs, spreadsheets, email, and external sources into reliable jobs with alerts when something breaks.',
+		},
+		{
+			step: '4',
+			title: 'Train and expand',
+			description:
+				'Short operator training, then phased rollout to more regions or departments on the same platform.',
+		},
+	]}
+	goodFit={[
+		'You outgrew spreadsheets but off-the-shelf software does not match how your business runs.',
+		'You manage distributed or field teams that need mobile-friendly tools with offline support.',
+		'Leadership needs dashboards built from data trapped in vendor portals or legacy systems.',
+		'You want to add AI to document-heavy workflows without risking customer-facing mistakes.',
+	]}
+	relatedServices={[
+		{
+			href: '/services/workflow-automation',
+			label: 'Workflow Automation',
+			description: 'Portals, PWAs, ETL, and automated reporting.',
+		},
+		{
+			href: '/services/applied-ai',
+			label: 'Applied AI',
+			description: 'Automation and intelligence for operational efficiency.',
+		},
+		{
+			href: '/services/cloud-architecture',
+			label: 'Cloud & DevOps',
+			description: 'Reliable hosting and monitoring for the systems your ops team depends on.',
+		},
+	]}
+	relatedAudiences={[
+		{ href: '/for/startup-founders', label: 'Startup founders' },
+		{ href: '/for/enterprise-engineering', label: 'Enterprise engineering' },
+	]}
+	faq={[
+		{
+			question: 'Will this replace our ERP?',
+			answer:
+				'Usually no. We integrate with systems you already pay for and build the operational layer that makes them usable day to day.',
+		},
+		{
+			question: 'How do you get frontline staff to actually use it?',
+			answer:
+				'We test with real users during the pilot and simplify until daily tasks take fewer steps than the old spreadsheet workflow.',
+		},
+		{
+			question: 'Can you work with our IT or security team?',
+			answer:
+				'Yes. We align on access controls, audit logs, and deployment early so review does not block you at the finish line.',
+		},
+		{
+			question: 'What if our process changes next quarter?',
+			answer:
+				'Modular forms, approvals, and reports evolve without a full rebuild—because we expect your operation to change.',
+		},
+	]}
+/>

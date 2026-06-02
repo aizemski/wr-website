@@ -1,0 +1,144 @@
+---
+import ServicePageShell from '../../components/ServicePageShell.astro';
+---
+
+<ServicePageShell
+	title="Custom Product Engineering & Modernization"
+	description="MVPs, React modernization, and production APIs for startup founders and enterprise leaders who need to ship faster without rewriting later."
+	headline="Ship products your market wants. Modernize what you already have."
+	audience="For startup founders and enterprise leaders"
+	subheadline="You need velocity without sacrificing quality. We build MVPs that win early customers and modernize React platforms so your team keeps shipping while technical debt shrinks—not grows."
+	painIntro="Product pressure is real. These are the patterns we see most often before teams call us."
+	painPoints={[
+		{
+			title: 'The MVP became the product',
+			description:
+				'A fast prototype turned into production, and every new feature fights the old shortcuts. Releases slow down while competitors ship.',
+		},
+		{
+			title: 'Modernization feels too risky',
+			description:
+				'Leadership wants React 18 and cleaner architecture, but nobody can afford a big-bang rewrite or months without shipping.',
+		},
+		{
+			title: 'APIs are the bottleneck',
+			description:
+				'Front-end teams wait on inconsistent backends. Auth, versioning, and observability were added late—and now every integration hurts.',
+		},
+	]}
+	outcomesIntro="We design for the next 18 months, not just the next sprint. Here is what clients typically gain."
+	outcomes={[
+		{
+			title: 'Faster path to revenue',
+			description:
+				'Launch customer-facing flows in weeks with scope disciplined around what validates the business—not every nice-to-have on the roadmap.',
+		},
+		{
+			title: 'A codebase your team owns',
+			description:
+				'Clear module boundaries, typed contracts, and tests in CI so new engineers onboard in days instead of months.',
+		},
+		{
+			title: 'Modernization without a freeze',
+			description:
+				'Strangler migrations and feature flags let you upgrade React and APIs while daily releases continue.',
+		},
+		{
+			title: 'APIs other teams can rely on',
+			description:
+				'Documented REST or GraphQL with auth, rate limits, and monitoring—so web, mobile, and partners integrate once.',
+		},
+	]}
+	highlights={[
+		{
+			title: 'High-velocity MVP development',
+			description:
+				'Validate ideas with production-grade React and Next.js apps. We run tight scope, weekly demos, and leave you foundations ready for the features that follow.',
+			tools: 'React · Next.js · Node.js',
+		},
+		{
+			title: 'Enterprise architecture modernization',
+			description:
+				'Migrate to React 18 with incremental strangler patterns. Reduce risk while daily releases continue and modules gain clear boundaries.',
+			tools: 'React 18 · TypeScript · migration patterns',
+		},
+		{
+			title: 'Robust API design',
+			description:
+				'Contract-first REST and GraphQL with auth, versioning, and observability. AWS AppSync when managed sync fits your product.',
+			tools: 'GraphQL · REST · Express · AWS AppSync',
+		},
+		{
+			title: 'Quality assurance & testing',
+			description:
+				'Automated unit, integration, and E2E coverage in CI so releases stay predictable and regressions surface before users see them.',
+			tools: 'Jest · Cypress · React Testing Library',
+		},
+	]}
+	process={[
+		{
+			step: '1',
+			title: 'Discovery & scope',
+			description:
+				'We map users, constraints, and success metrics in a short workshop. You leave with a phased plan—not a vague estimate.',
+		},
+		{
+			step: '2',
+			title: 'Build in weekly cycles',
+			description:
+				'Each week ships something demoable. You review working software, adjust priorities, and see velocity in the open.',
+		},
+		{
+			step: '3',
+			title: 'Harden for production',
+			description:
+				'We add auth, error handling, performance checks, and CI gates before launch. No “we will fix it after go-live.”',
+		},
+		{
+			step: '4',
+			title: 'Handoff & scale',
+			description:
+				'Documentation, runbooks, and pairing with your team so you can extend the product without us in the loop forever.',
+		},
+	]}
+	goodFit={[
+		'You are pre-seed through Series A and need an MVP that survives your first 10,000 users.',
+		'Your React app is on an older stack and releases take days because every change touches everything.',
+		'You are splitting a monolith into services and need APIs your internal teams can consume confidently.',
+		'You have design or product direction but need senior engineers who have shipped this before.',
+	]}
+	relatedServices={[
+		{
+			href: '/services/cloud-architecture',
+			label: 'Cloud & DevOps',
+			description: 'Deploy and scale what we build on AWS with CI/CD and observability from day one.',
+		},
+		{
+			href: '/services/applied-ai',
+			label: 'Applied AI',
+			description: 'Add LLM features and intelligence without bolting on a separate “AI project.”',
+		},
+	]}
+	faq={[
+		{
+			question: 'How long does a typical MVP take?',
+			answer:
+				'Most focused MVPs land in 6–10 weeks depending on scope, integrations, and compliance needs. We define a thin first release in discovery so you can launch and learn—not wait for perfection.',
+		},
+		{
+			question: 'Can you work with our existing design team?',
+			answer:
+				'Yes. We implement from Figma or your design system, flag feasibility issues early, and keep design and engineering aligned each sprint.',
+		},
+		{
+			question: 'Do you take over our whole engineering org?',
+			answer:
+				'No. We embed as a senior squad for a defined outcome—MVP, modernization, or API layer—and pair with your team so knowledge stays in-house.',
+		},
+		{
+			question: 'What happens after launch?',
+			answer:
+				'You can retain us for iteration, transition to your hires with our support, or mix both. Architecture and docs are built so you are never locked in.',
+		},
+	]}
+/>

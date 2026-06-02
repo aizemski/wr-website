@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import { resolveHeroImage } from '../utils/blog';
+
+interface Props {
+	src?: string;
+	alt: string;
+	class?: string;
+	width?: number;
+	height?: number;
+}
+
+const { src, alt, class: className, width = 1200, height = 630 } = Astro.props;
+const image = resolveHeroImage(src);
+---
+
+{
+	image && (
+		<Image
+			src={image}
+			alt={alt}
+			width={width}
+			height={height}
+			class:list={['h-full w-full object-cover', className]}
+		/>
+	)
+}

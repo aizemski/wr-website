@@ -1,0 +1,144 @@
+---
+import ServicePageShell from '../../components/ServicePageShell.astro';
+---
+
+<ServicePageShell
+	title="Cloud Architecture & DevOps Consulting"
+	description="AWS serverless, CI/CD, security baselines, and CloudWatch observability for enterprise leaders and startups."
+	headline="Infrastructure that keeps pace with your product roadmap."
+	audience="For enterprise leaders and startups"
+	subheadline="Slow deploys and surprise outages cost more than cloud spend. We design event-driven AWS systems and CI/CD pipelines so your team ships with confidence—and sleeps through release night."
+	painIntro="Infrastructure debt shows up as fear every deploy. These are the signals we fix first."
+	painPoints={[
+		{
+			title: 'Deploys are manual and scary',
+			description:
+				'Someone runs scripts by hand, fingers crossed. Rollbacks are unclear and staging never quite matches production.',
+		},
+		{
+			title: 'Bills grow faster than usage',
+			description:
+				'Lambda sprawl, idle resources, and missing autoscaling mean you pay for capacity you do not need—or hit limits at the worst time.',
+		},
+		{
+			title: 'Outages are surprises',
+			description:
+				'Customers report problems before your team sees them. Logs are scattered and alerts fire too late—or not at all.',
+		},
+	]}
+	outcomesIntro="Solid infrastructure pays back in speed and calm. Here is what teams gain after we engage."
+	outcomes={[
+		{
+			title: 'Ship multiple times a day',
+			description:
+				'Automated pipelines run tests, security scans, and staged deploys so releases are routine—not events.',
+		},
+		{
+			title: 'Right-sized cloud spend',
+			description:
+				'Serverless and event-driven patterns scale with demand. You stop paying for peak capacity sitting idle at 2 a.m.',
+		},
+		{
+			title: 'Security that passes review',
+			description:
+				'IAM least privilege, secrets hygiene, and guardrails documented for auditors—without blocking delivery.',
+		},
+		{
+			title: 'Issues caught before customers',
+			description:
+				'Dashboards, SLOs, and alerts tuned to symptoms that matter—not noise that gets ignored.',
+		},
+	]}
+	highlights={[
+		{
+			title: 'Serverless cloud infrastructure',
+			description:
+				'Right-sized Lambda, SQS, SNS, and EventBridge flows. Scale on demand without running servers you do not need.',
+			tools: 'AWS Lambda · SQS · SNS · EventBridge',
+		},
+		{
+			title: 'DevOps & CI/CD optimization',
+			description:
+				'Faster releases with Docker, Kubernetes where it fits, and GitHub Actions pipelines your engineers maintain.',
+			tools: 'Docker · Kubernetes · GitHub Actions',
+		},
+		{
+			title: 'Cloud security & compliance',
+			description:
+				'IAM least privilege, secrets hygiene, and guardrails that pass security review without blocking delivery velocity.',
+			tools: 'IAM best practices · secrets · policy as code',
+		},
+		{
+			title: 'System observability',
+			description:
+				'AWS CloudWatch dashboards, alerts, and structured logging so you fix issues before customers report them.',
+			tools: 'AWS CloudWatch · logging · alerting',
+		},
+	]}
+	process={[
+		{
+			step: '1',
+			title: 'Assess what you have',
+			description:
+				'We review architecture, pipelines, costs, and incident history. You get a prioritized roadmap—not a generic cloud checklist.',
+		},
+		{
+			step: '2',
+			title: 'Stabilize the critical path',
+			description:
+				'Fix deploys, secrets, and monitoring on the services that matter most. Quick wins build trust before bigger moves.',
+		},
+		{
+			step: '3',
+			title: 'Redesign for scale',
+			description:
+				'Introduce event-driven patterns, environments that match prod, and infrastructure as code your team can own.',
+		},
+		{
+			step: '4',
+			title: 'Enable your engineers',
+			description:
+				'Runbooks, pairing, and docs so internal teams operate and extend what we built—without a permanent dependency.',
+		},
+	]}
+	goodFit={[
+		'You are on AWS but growth exposed gaps in CI/CD, IAM, or observability.',
+		'You are moving from VPS or Heroku to serverless and need a sane migration plan.',
+		'Security or compliance review is coming and infrastructure needs to catch up.',
+		'Engineering spends more time firefighting than building product features.',
+	]}
+	relatedServices={[
+		{
+			href: '/services/product-engineering',
+			label: 'Product Engineering',
+			description: 'Build the applications that run on the infrastructure we design together.',
+		},
+		{
+			href: '/services/workflow-automation',
+			label: 'Workflow Automation',
+			description: 'Host data pipelines and internal portals on the AWS foundation we put in place.',
+		},
+	]}
+	faq={[
+		{
+			question: 'Do you only work with AWS?',
+			answer:
+				'AWS is our primary focus—Lambda, EventBridge, and the serverless ecosystem. If you are multi-cloud, we scope what we can own clearly or partner on the edges.',
+		},
+		{
+			question: 'Will you replace our DevOps team?',
+			answer:
+				'We augment senior capacity for a defined outcome—pipeline overhaul, observability, or migration—and upskill your people along the way.',
+		},
+		{
+			question: 'How fast can we improve deploy frequency?',
+			answer:
+				'Many teams see meaningful CI/CD gains in 3–6 weeks on the critical service. Deeper architecture work follows the roadmap we agree in assessment.',
+		},
+		{
+			question: 'Can you help with cost optimization?',
+			answer:
+				'Yes. We right-size resources, fix misconfigured autoscaling, and set cost alerts so spend tracks actual usage—not surprises on the invoice.',
+		},
+	]}
+/>
