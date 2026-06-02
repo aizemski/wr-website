@@ -1,6 +1,16 @@
 ---
 import LegalDocument from '../components/LegalDocument.astro';
-import { CONTACT_EMAIL, COOKIE_SCRIPT_ID, GOOGLE_ANALYTICS_ID, LEGAL_ENTITY_NAME, SITE_URL } from '../consts';
+import {
+	CONTACT_EMAIL,
+	CONTACT_PHONE,
+	CONTACT_PHONE_TEL,
+	COOKIE_SCRIPT_ID,
+	GOOGLE_ANALYTICS_ID,
+	LEGAL_ENTITY_NAME,
+	LEGAL_NIP,
+	LEGAL_REGON,
+	SITE_URL,
+} from '../consts';
 ---
 
 <LegalDocument
@@ -21,18 +31,19 @@ import { CONTACT_EMAIL, COOKIE_SCRIPT_ID, GOOGLE_ANALYTICS_ID, LEGAL_ENTITY_NAME
 	<p>The data controller responsible for your personal data is:</p>
 	<ul>
 		<li><strong>{LEGAL_ENTITY_NAME}</strong></li>
+		<li><strong>NIP:</strong> {LEGAL_NIP}</li>
+		<li><strong>REGON:</strong> {LEGAL_REGON}</li>
 		<li>
 			Website: <a href={SITE_URL}>{SITE_URL}</a>
 		</li>
 		<li>
 			Email: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
 		</li>
+		<li>
+			Phone: <a href={`tel:${CONTACT_PHONE_TEL}`}>{CONTACT_PHONE}</a>
+		</li>
 	</ul>
-	<p>
-		We operate as a remote software studio serving clients internationally. If you need our postal address for legal
-		correspondence, email us at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> and we will provide it within a
-		reasonable time.
-	</p>
+	<p>We operate as a remote software studio serving clients internationally.</p>
 	<p>
 		We have not appointed a Data Protection Officer. For privacy questions, contact us at
 		<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.

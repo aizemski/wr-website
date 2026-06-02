@@ -1,6 +1,14 @@
 ---
 import LegalDocument from '../components/LegalDocument.astro';
-import { CONTACT_EMAIL, LEGAL_ENTITY_NAME, SITE_URL } from '../consts';
+import {
+	CONTACT_EMAIL,
+	CONTACT_PHONE,
+	CONTACT_PHONE_TEL,
+	LEGAL_ENTITY_NAME,
+	LEGAL_NIP,
+	LEGAL_REGON,
+	SITE_URL,
+} from '../consts';
 ---
 
 <LegalDocument
@@ -20,21 +28,22 @@ import { CONTACT_EMAIL, LEGAL_ENTITY_NAME, SITE_URL } from '../consts';
 	<h2>1. Service provider information</h2>
 	<p>In accordance with EU e-commerce transparency rules, our service provider details are:</p>
 	<ul>
-		<li><strong>Trading name:</strong> {LEGAL_ENTITY_NAME}</li>
+		<li><strong>Service provider:</strong> {LEGAL_ENTITY_NAME}</li>
+		<li><strong>NIP:</strong> {LEGAL_NIP}</li>
+		<li><strong>REGON:</strong> {LEGAL_REGON}</li>
 		<li>
 			<strong>Website:</strong> <a href={SITE_URL}>{SITE_URL}</a>
 		</li>
 		<li>
 			<strong>Contact email:</strong> <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
 		</li>
+		<li>
+			<strong>Phone:</strong> <a href={`tel:${CONTACT_PHONE_TEL}`}>{CONTACT_PHONE}</a>
+		</li>
 	</ul>
 	<p>
 		We provide custom software engineering, applied AI, workflow automation, and cloud consulting services to business
 		clients. The Site is an informational and lead-generation channel, not a consumer marketplace.
-	</p>
-	<p>
-		If you require a postal address, company registration number, or VAT identification for legal or procurement purposes,
-		email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> and we will respond within a reasonable time.
 	</p>
 
 	<h2>2. Eligibility and accounts</h2>
@@ -54,6 +63,7 @@ import { CONTACT_EMAIL, LEGAL_ENTITY_NAME, SITE_URL } from '../consts';
 		<li>Use automated means to harvest contact information or content without our prior written consent;</li>
 		<li>Misrepresent your identity or affiliation when contacting us;</li>
 		<li>Use Site content to build a competing service through systematic copying;</li>
+		<li>Infringe intellectual property rights belonging to us or third parties;</li>
 		<li>Interfere with other users&apos; access to the Site.</li>
 	</ul>
 	<p>We may suspend or restrict access if we reasonably believe you have violated these Terms or applicable law.</p>
@@ -62,6 +72,7 @@ import { CONTACT_EMAIL, LEGAL_ENTITY_NAME, SITE_URL } from '../consts';
 	<p>
 		The Site and its content (including text, graphics, logos, layout, code, blog articles, and design elements) are owned
 		by {LEGAL_ENTITY_NAME} or our licensors and are protected by copyright, trademark, and other intellectual property laws.
+		Copying, distributing, or using Site content in any way without the owner&apos;s consent is prohibited.
 	</p>
 	<p>
 		We grant you a limited, non-exclusive, non-transferable, revocable license to access and view the Site for your internal
@@ -86,7 +97,8 @@ import { CONTACT_EMAIL, LEGAL_ENTITY_NAME, SITE_URL } from '../consts';
 	</p>
 	<p>
 		We aim for accuracy but do not warrant that all content is complete, current, or error-free. Use of information from the
-		Site is at your own risk.
+		Site is at your own risk. All content published on the Site is for informational purposes only and does not constitute
+		an offer within the meaning of applicable contract law.
 	</p>
 
 	<h2>6. Contact submissions and communications</h2>
@@ -134,7 +146,8 @@ import { CONTACT_EMAIL, LEGAL_ENTITY_NAME, SITE_URL } from '../consts';
 	<p>
 		To the fullest extent permitted by law, {LEGAL_ENTITY_NAME} and its directors, employees, and contractors will not be
 		liable for any indirect, incidental, special, consequential, or punitive damages, or for loss of profits, revenue, data,
-		or goodwill, arising from or related to your use of the Site.
+		or goodwill, arising from or related to your use of the Site. We are not liable for damage resulting from use of the Site
+		in a manner inconsistent with these Terms.
 	</p>
 	<p>
 		Our total aggregate liability for claims arising from Site use (excluding liability that cannot be limited by law) is
@@ -158,6 +171,10 @@ import { CONTACT_EMAIL, LEGAL_ENTITY_NAME, SITE_URL } from '../consts';
 	</p>
 
 	<h2>12. Availability and changes</h2>
+	<p>
+		We make reasonable efforts to keep the Site available and up to date, but we do not guarantee uninterrupted operation.
+		Outages caused by technical issues, maintenance, or factors outside our control may occur.
+	</p>
 	<p>
 		We may modify, suspend, or discontinue any part of the Site at any time without notice. We may update these Terms by
 		posting a revised version on this page with an updated date. Material changes will be indicated on the Site. Continued

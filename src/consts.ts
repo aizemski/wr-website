@@ -1,7 +1,11 @@
 export const SITE_TITLE = 'White Raven';
 export const SITE_URL = 'https://whiteraven.app';
 export const CONTACT_EMAIL = 'contact@whiteraven.app';
-export const LEGAL_ENTITY_NAME = 'White Raven';
+export const CONTACT_PHONE = '+48 519 842 370';
+export const CONTACT_PHONE_TEL = '+48519842370';
+export const LEGAL_ENTITY_NAME = 'White Raven ALEKSANDER IŻEMSKI';
+export const LEGAL_NIP = '8792741703';
+export const LEGAL_REGON = '523007968';
 export const LEGAL_LAST_UPDATED = '2 June 2026';
 
 export const GOOGLE_ANALYTICS_ID = 'G-GYWDW0JC8G';
