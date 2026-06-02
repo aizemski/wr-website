@@ -203,6 +203,12 @@ Minimum viable controls:
 - Audit log on schedule changes (who moved the job).
 - Retention policy for client addresses and notes in line with your contracts.
 
+## How do you know the spreadsheet is truly retired?
+
+The spreadsheet is retired when dispatch edits only in the operational tool, Excel exports are read-only reports, and nobody keeps a "backup" tab updated manually. Run a two-week audit: compare schedule changes in the app vs any shadow file. Any drift means adoption or training gaps, not more features.
+
+Celebrate the first week with zero double-bookings more than the launch party. Small businesses win when crews trust the schedule on their phones, not when the owner sees a demo dashboard.
+
 ## FAQ
 
 **Can we keep Excel for reporting if the schedule moves to a portal?**  

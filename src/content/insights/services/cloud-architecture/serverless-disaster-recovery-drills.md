@@ -269,6 +269,12 @@ According to [Entro Security's staging best-practices guide](https://entro.secur
 
 Regulated customers increasingly ask for **evidence of last successful restore**, not only backup job success logs. Include restore row-count validation and application smoke test results in the quarterly posture summary so sales and customer success can answer vendor questionnaires without opening a ticket to platform engineering.
 
+## What proves a drill actually worked?
+
+Archive timestamped evidence: who ran the drill, which region failed over, row counts or checksums validated, application smoke test results, and time to restore within RTO. Auditors and enterprise customers ask for last successful restore date, not whether backup jobs show green in a console.
+
+Schedule the next drill before closing the ticket on the current one. Teams that drill only after incidents rediscover the same gap under pressure.
+
 ## FAQ
 
 **Is multi-region active-active required for serverless?**  

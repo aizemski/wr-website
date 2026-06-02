@@ -348,6 +348,12 @@ Document each answer in a shared incident log linked from the flag registry. Ove
 
 Platform teams should review the log monthly with security and product. Patterns repeat when governance is weak; the log makes weakness visible without blaming a single release engineer. That discipline is what separates incremental enterprise release from permanent beta culture.
 
+## What flag hygiene review belongs in the monthly platform meeting?
+
+Audit flags past TTL, flags without owners, flags without metrics, and flags stuck between 5% and 25% traffic for more than two sprints. Each item gets extend, promote, or kill decision with named owner. Permanent flags are configuration debt that confuses on-call and auditors.
+
+Enterprise release velocity depends on **retiring** flags as much as creating them. Celebrate flag deletion in the same channel you celebrate launches.
+
 ## FAQ
 
 **Are feature flags the same as blue-green deploy?**  

@@ -36,11 +36,7 @@ const fullTitle = title === SITE_TITLE ? title : `${title} · ${SITE_TITLE}`;
 />
 
 <script is:inline>
-	(function () {
-		const stored = localStorage.getItem('theme');
-		const theme = stored ?? 'light';
-		document.documentElement.classList.toggle('dark', theme === 'dark');
-	})();
+	document.documentElement.classList.remove('dark');
 </script>
 
 <link rel="canonical" href={canonicalURL} />
@@ -48,8 +44,7 @@ const fullTitle = title === SITE_TITLE ? title : `${title} · ${SITE_TITLE}`;
 <title>{fullTitle}</title>
 <meta name="title" content={fullTitle} />
 <meta name="description" content={description} />
-<meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
-<meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#f8fafc" />
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />

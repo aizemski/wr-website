@@ -218,6 +218,12 @@ According to [EU AI Act implementation timelines published by the European Commi
 
 **Citation capsule:** OpenAI and peer vendors publish tiered pricing and capability levels; harnesses must log model ID and token usage per eval run so cost and latency regressions are visible before finance discovers them at month end ([API pricing](https://openai.com/api/pricing/), OpenAI, 2024).
 
+## How often should golden sets and thresholds change?
+
+Review thresholds when product changes user-visible behavior, when you switch model vendors, or when production near-misses cluster on one failure mode. Add redacted production failures to golden sets monthly during early launch, then quarterly once stable.
+
+Stale golden sets create false confidence. Version the harness config in Git alongside application code so rollback includes eval criteria, not only model weights.
+
 ## FAQ
 
 **How is a golden dataset different from fine-tuning data?**  

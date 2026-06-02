@@ -188,6 +188,12 @@ Package artifacts reviewers already recognize from API programs:
 
 [ORIGINAL DATA] Pilot scorecards we see in delivery often show **30 to 50%** reduction in Monday assembly hours in phase one when only three tiles ship, with dispute rate flat until metric catalog sign-off, then declining in phase two. Your mileage depends on upstream quality, not chart count.
 
+## When should you add tiles beyond the pilot three?
+
+Add tiles when metric definitions are signed by finance and ops, upstream ETL freshness meets SLA, and dispute rate on existing tiles is stable for a month. New charts without catalog governance recreate the export-and-pivot habit in a prettier UI.
+
+Tenant admins should see the same metric labels executives see in board packs. Label drift between dashboard and PDF reports destroys trust faster than missing features.
+
 ## FAQ
 
 **Do we need a separate dashboard per region?**  

@@ -2,8 +2,6 @@
 import LegalDocument from '../components/LegalDocument.astro';
 import {
 	CONTACT_EMAIL,
-	CONTACT_PHONE,
-	CONTACT_PHONE_TEL,
 	COOKIE_SCRIPT_ID,
 	GOOGLE_ANALYTICS_ID,
 	LEGAL_ENTITY_NAME,
@@ -38,9 +36,6 @@ import {
 		</li>
 		<li>
 			Email: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-		</li>
-		<li>
-			Phone: <a href={`tel:${CONTACT_PHONE_TEL}`}>{CONTACT_PHONE}</a>
 		</li>
 	</ul>
 	<p>We operate as a remote software studio serving clients internationally.</p>
@@ -81,10 +76,6 @@ import {
 			<strong>Cookie and consent data:</strong> cookie identifiers, consent choices, and timestamps recorded by our cookie
 			consent platform.
 		</li>
-		<li>
-			<strong>Local preference data:</strong> theme preference (light/dark) stored in your browser&apos;s local storage when
-			you change display settings.
-		</li>
 	</ul>
 	<p>
 		We do not intentionally collect special categories of personal data (such as health data) through the Site. Please do
@@ -101,9 +92,6 @@ import {
 		<li>
 			<strong>Automatically</strong> when you visit the Site, through server logs and analytics technologies described in
 			Section 6.
-		</li>
-		<li>
-			<strong>From your browser</strong> when you store theme preferences locally.
 		</li>
 	</ul>
 
@@ -145,11 +133,6 @@ import {
 				<td>Your consent (Art. 6(1)(a)); legal obligation to respect choices where applicable (Art. 6(1)(c))</td>
 			</tr>
 			<tr>
-				<td>Remember display theme preference</td>
-				<td>Local storage value</td>
-				<td>Legitimate interest in providing a usable interface (Art. 6(1)(f))</td>
-			</tr>
-			<tr>
 				<td>Comply with law, enforce terms, and protect rights</td>
 				<td>Relevant data in our systems</td>
 				<td>Legal obligation (Art. 6(1)(c)); legitimate interest (Art. 6(1)(f))</td>
@@ -179,9 +162,6 @@ import {
 			<strong>Analytics and performance:</strong> help us understand how visitors use the Site. We use Google Analytics
 			(property ID: {GOOGLE_ANALYTICS_ID}) and Microsoft Clarity (session recordings and heatmaps). These tools are loaded
 			in accordance with your consent choices where required.
-		</li>
-		<li>
-			<strong>Functional:</strong> theme preference stored in <code>localStorage</code> under the key <code>theme</code>.
 		</li>
 	</ul>
 

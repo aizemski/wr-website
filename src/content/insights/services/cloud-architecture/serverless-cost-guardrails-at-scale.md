@@ -264,6 +264,12 @@ Without that closure loop, dashboards become wallpaper and guardrails erode the 
 
 **Citation capsule:** The FinOps Foundation treats cost allocation and anomaly management as core capabilities ([FinOps Framework](https://www.finops.org/framework/capabilities/)). Dashboards linked to ticket creation close the loop between visibility and action.
 
+## What cost metrics belong in the weekly standup?
+
+Review week-over-week spend by service, anomaly tickets opened and closed, and top three resources by delta. Tie anomalies to owner teams, not only to a central FinOps dashboard nobody acts on. When spend rises with traffic proportionally, that is scaling; when Lambda duration doubles flat traffic, that is a bug or config drift.
+
+Finance and engineering should share one **unit economics** view: cost per thousand requests or per active tenant. Guardrails without unit context produce false alarms or missed leaks.
+
 ## FAQ
 
 **Are AWS Budgets enough on their own?**  

@@ -214,6 +214,12 @@ When sales requests a custom catalog for one strategic account, treat it as a **
 
 **Citation capsule:** B2B ERP integration succeeds when product, finance, and ERP administration share one prioritized exception backlog tied to a single pilot customer journey, not when engineering alone closes API tickets.
 
+## What metrics should leadership review monthly?
+
+Track reconciliation pass rate on the pilot journey, median portal-to-ERP lag, exception queue age P95, and hours finance still spends on manual fixes. When lag improves but disputes rise, pause write-path expansion until mapping rules catch up. When exceptions age past SLA, staff ops triage before adding new catalog features.
+
+Executive dashboards should show **retired manual steps**, not endpoint count. One journey green for two months earns the next slice; a green API with red finance spreadsheets means the program is not done yet.
+
 ## FAQ
 
 **Should we replace ERP when we build the portal?**  

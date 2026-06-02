@@ -271,6 +271,12 @@ Series A use of proceeds should name engineering investments reviewers already i
 
 **Citation capsule:** PostRound reported median Series A round size at **$15M** in 2024 with fewer total deals ([PostRound](https://postround.substack.com/p/2024-vc-deal-data-in-review)). Larger checks correlate with faster diligence when narrative and evidence align on the first pass.
 
+## What should founders update before diligence starts?
+
+Refresh architecture diagram, dependency list with licenses, on-call rotation, last incident PIR, and test coverage on auth and billing paths. Record a five-minute deploy walkthrough video investors can share internally. Stale docs older than one quarter trigger deeper technical sessions that burn runway.
+
+Assign one owner to the data room index. Scattered Google Drive links signal operational immaturity as loudly as missing tests.
+
 ## FAQ
 
 **When should we start preparing?**  

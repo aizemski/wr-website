@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import { resolveHeroImage } from '../utils/blog';
 
 interface Props {
@@ -16,11 +15,13 @@ const image = resolveHeroImage(src);
 
 {
 	image && (
-		<Image
-			src={image}
+		<img
+			src={image.src}
 			alt={alt}
 			width={width}
 			height={height}
+			loading="lazy"
+			decoding="async"
 			class:list={['h-full w-full object-cover', className]}
 		/>
 	)

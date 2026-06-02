@@ -255,6 +255,12 @@ A one-page pack beats a dashboard nobody opens:
 
 Review in a **20-minute** standing meeting with sales ops and one partner delegate. Decisions are process tweaks, not blame sessions.
 
+## What triggers phase two of quoting automation?
+
+Phase two earns funding when median quote cycle time drops, revision rate stabilizes, and CRM sync quarantine stays near zero for four weeks. If partners still maintain shadow spreadsheets for rates, fix master data before adding AI assist or complex pricing rules.
+
+Small firms should resist building every integration at once. One CRM path plus PDF output that matches brand often delivers most ROI before custom client portals.
+
 ## FAQ
 
 **Will quoting automation replace our partners' judgment?**  

@@ -243,6 +243,12 @@ Regulated buyers in enterprise and compliance programs should pair this framewor
 
 **Citation capsule:** Legal and procurement reviews favor RAG with explicit corpora and no weight training on raw exports until data boundaries and vendor DPAs are settled. Fine-tuning raises memorization and subprocessors questions that slow enterprise sign-off.
 
+## When should you revisit the RAG vs fine-tune decision?
+
+Revisit when eval harness shows grounded answers failing after retrieval improvements plateau, or when latency and cost at your traffic tier make a smaller fine-tuned model cheaper than repeated long-context RAG calls. Document the decision in an ADR with metrics, not a hallway conversation.
+
+Quarterly review with legal and security prevents "temporary" fine-tunes on production exports becoming permanent compliance debt.
+
 ## FAQ
 
 **Is RAG always cheaper than fine-tuning?**  

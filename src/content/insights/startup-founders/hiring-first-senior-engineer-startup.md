@@ -269,6 +269,12 @@ Keep a **decision log** of why you extended an offer. When hire two arrives, tha
 
 Share the decision log internally with advisors or board members who help with hiring. External perspective catches founder blind spots (over-weighting culture fit, under-weighting production ownership) before comp is committed.
 
+## What signals show hire one is working by day 90?
+
+You should see merged PRs with tests on production paths, a written ADR or two, reduced founder firefighting on deploys, and a clearer backlog than "fix whatever broke." If velocity rises but incident rate rises faster, pause feature work and pair on reliability before hiring a second engineer.
+
+Founders who skip the day-30 and day-90 retros lose early warning when scope creep or missing documentation burns the hire. Treat those meetings as product reviews, not HR checkboxes.
+
 ## FAQ
 
 **Do we need FAANG experience?**  

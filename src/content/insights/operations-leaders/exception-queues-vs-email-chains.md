@@ -235,6 +235,12 @@ Supervisors set culture faster than IT policies. Train them to:
 
 When supervisors revert to threads under pressure, bypass rate rises within 48 hours. Coach that behavior publicly using queue metrics, not shame.
 
+## What weekly metrics keep queues honest?
+
+Track open count by age bucket, SLA breach rate, bypass rate (exceptions resolved in email without queue update), and mean time to first assignment. If bypass rate climbs while open count falls, teams are gaming metrics by hiding work in threads.
+
+Review one resolved item per huddle for note quality. Thin notes recreate email archaeology inside the tool you paid for.
+
 ## FAQ
 
 **Should we ban email entirely?**  

@@ -284,6 +284,12 @@ Release managers should review **change volume vs CFR** monthly: if deploy frequ
 
 Document **rollback drills** in the same evidence store as forward deploys. Auditors and customers increasingly ask whether teams have exercised restore paths, not only whether forward pipelines are green. Pair change control evidence with DR drill packets for tier-1 services so authorization, test, and recovery stories stay linked.
 
+## What should release managers report to leadership monthly?
+
+Summarize deploy frequency, change failure rate, mean time to restore, and percentage of changes with complete evidence packets. Highlight any tier-1 service missing parity review or drill within policy window. Executives need trend lines, not ticket counts.
+
+When CFR rises, distinguish test gaps from approval bottlenecks before adding ceremony. [DORA research](https://dora.dev/) links smaller batches and automation to stability; more CAB meetings without better tests rarely help.
+
 ## FAQ
 
 **Does frequent deploy violate SOX change policies?**  

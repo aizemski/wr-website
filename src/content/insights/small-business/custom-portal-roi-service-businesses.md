@@ -239,6 +239,12 @@ Client-facing portals succeed when back-office systems stay synchronized. [Workf
 
 Without ETL discipline, staff re-key portal data anyway and ROI collapses. Phase one should include **one automated sync path**, even if CSV to start, with a timestamped audit log.
 
+## How do you calculate ROI without fantasy assumptions?
+
+Use hours saved per week from time studies, not vendor calculator defaults. Include staff time to maintain sync and support client login issues. Subtract SaaS fees you still pay. If payback exceeds 18 months without strategic client retention benefit, narrow scope to the workflow clients complain about most.
+
+Review ROI quarterly with the owner who approved budget. Portals that nobody uses have zero ROI regardless of build cost.
+
 ## FAQ
 
 **What ROI should I expect in year one?**  

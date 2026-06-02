@@ -2,8 +2,6 @@
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 import NavServicesMenu from './NavServicesMenu.astro';
-import ThemeToggle from './ThemeToggle.astro';
-
 const navLinks = [{ href: '/blog', label: 'Blog' }];
 
 const mobileServiceLinks = [
@@ -48,7 +46,6 @@ const mobileServiceLinks = [
 			<a href="/contact" class="btn-primary hidden px-5 py-2.5 text-xs sm:inline-flex sm:text-sm">
 				Let&apos;s Discuss Your Vision
 			</a>
-			<ThemeToggle />
 			<button
 				type="button"
 				id="mobile-menu-toggle"

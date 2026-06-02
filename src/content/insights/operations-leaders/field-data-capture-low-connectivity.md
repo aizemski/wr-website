@@ -200,6 +200,12 @@ If billing still re-keys quantities from paper, you have not finished phase one.
 
 [CHART: Horizontal bar - Hours from job complete to invoice sent (before vs after offline PWA pilot; illustrative ranges) - source: service operations benchmarks]
 
+## What field metrics prove capture is working?
+
+Measure sync success rate, median time from job complete to invoice sent, re-keying hours per week, and photo attach rate on closed jobs. If sync succeeds but billing still re-keys, your status gates or field definitions do not match finance vocabulary.
+
+Pilots in low-connectivity regions should report **dispute rate** on automated invoices separately from office trials. Field truth only counts when finance trusts it without a shadow spreadsheet.
+
 ## FAQ
 
 **Do we need a native app for offline?**  

@@ -273,6 +273,12 @@ Keep it one page:
 
 When a design partner asks how you ship safely, send the link. Credibility beats adjectives.
 
+## When should startups add the next test layer?
+
+Add integration tests when a second engineer touches the same API, E2E when investors or design partners depend on a demo path weekly, and load tests when you have paying users on a shared tenant. Each layer should tie to a recent incident or near-miss, not a coverage percentage goal.
+
+Deleting flaky tests without fixing root cause erodes trust faster than skipping tests entirely. Quarantine with owner and expiry date, then fix or remove within one sprint.
+
 ## FAQ
 
 **Do we need tests before we have users?**  

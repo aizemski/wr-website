@@ -240,6 +240,12 @@ Founders should protect one happy-path API surface until PMF stabilizes. Enterpr
 
 **Citation capsule:** Growing teams avoid protocol mandates without metrics, resolver-heavy business logic, and premature federation. A staffed BFF and contract tests in CI outperform ideology-driven GraphQL rollouts.
 
+## What should you measure during a protocol pilot?
+
+Compare p95 latency, payload bytes, and client release frequency before and after the pilot slice. Track production incidents tied to schema or OpenAPI drift. If GraphQL wins on mobile payload but doubles resolver incidents, you may need a BFF owner before expanding scope.
+
+Review pilot metrics with mobile, web, and partner stakeholders in one room. Protocol debates that stay engineering-only often ignore partner cache requirements or App Store review constraints on client behavior.
+
 ## FAQ
 
 **Should a Series A startup adopt GraphQL day one?**  

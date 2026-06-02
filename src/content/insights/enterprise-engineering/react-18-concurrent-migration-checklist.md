@@ -217,6 +217,12 @@ According to [Stack Overflow's 2024 developer survey](https://survey.stackoverfl
 
 **Citation capsule:** McKinsey's 2024 productivity research links golden paths to faster adoption of new engineering practices. React 18 programs need shared migration logs and performance budgets, not a single big-bang training deck ([Developer productivity with generative AI](https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/unleashing-developer-productivity-with-generative-ai), McKinsey, 2024).
 
+## What proves a migrated route is ready for full traffic?
+
+Require 30 days at target traffic with error budget green, support tags flat, and performance within budget vs legacy baseline. Compare Core Web Vitals field data, not only lab scores. Retire legacy code in the same sprint you declare victory or drift returns.
+
+Migration programs that skip retirement accumulate two stacks forever. Schedule deletion as a sprint goal with archived rollback artifacts, not as optional cleanup.
+
 ## FAQ
 
 **Is React 18 a breaking change for class components?**  
