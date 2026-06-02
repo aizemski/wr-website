@@ -1,0 +1,522 @@
+---
+import { CONTACT_EMAIL } from '../consts';
+
+interface Props {
+	contactEmail?: string;
+}
+
+const { contactEmail = CONTACT_EMAIL } = Astro.props;
+
+const steps = [
+	{ id: 1, title: 'About you', hint: 'Add your name and work email to continue.' },
+	{ id: 2, title: 'Your goals', hint: 'Select at least one area that matches your project.' },
+	{ id: 3, title: 'Project details', hint: 'Choose a timeline and tell us what you want to build.' },
+];
+
+const services = [
+	{
+		id: 'product-engineering',
+		label: 'Product & apps',
+		fullLabel: 'Custom Product Engineering & Modernization',
+		description: 'MVPs, React/Next.js apps, and legacy modernization.',
+	},
+	{
+		id: 'applied-ai',
+		label: 'AI & ML',
+		fullLabel: 'Applied AI & Machine Learning',
+		description: 'LLM integrations, RAG, and predictive analytics.',
+	},
+	{
+		id: 'workflow-automation',
+		label: 'Automation & portals',
+		fullLabel: 'Workflow Automation & Custom Portals',
+		description: 'Dashboards, ETL, PWAs, and internal tooling.',
+	},
+	{
+		id: 'cloud-architecture',
+		label: 'Cloud & DevOps',
+		fullLabel: 'Cloud Architecture & DevOps Consulting',
+		description: 'AWS serverless, CI/CD, security, and observability.',
+	},
+];
+
+const timelines = ['ASAP (under 4 weeks)', '1–3 months', '3–6 months', '6+ months', 'Exploring options'];
+const budgets = ['Under $25k', '$25k–$75k', '$75k–$150k', '$150k+', 'Not sure yet'];
+
+const serviceLabelsJson = JSON.stringify(
+	Object.fromEntries(services.map((s) => [s.id, s.fullLabel])),
+);
+---
+
+<div
+	id="contact-multistep"
+	class="contact-form w-full"
+	data-contact-email={contactEmail}
+	data-service-labels={serviceLabelsJson}
+	data-steps={JSON.stringify(steps)}
+>
+	<div id="contact-form-active" class="contact-form-active">
+		<div class="mb-8">
+			<div class="mb-3 flex items-center justify-between gap-4 text-xs font-medium uppercase tracking-widest text-slate-600 dark:text-slate-400">
+				<span id="contact-step-label">Step 1 of 3 · About you</span>
+				<span id="contact-step-percent" class="text-[#0067FF]">33%</span>
+			</div>
+			<div class="h-1.5 overflow-hidden rounded-full bg-slate-200 dark:bg-white/10" role="presentation">
+				<div
+					id="contact-progress-bar"
+					class="h-full rounded-full bg-[#0067FF] transition-all duration-500 ease-out"
+					style="width: 33.333%"
+					role="progressbar"
+					aria-valuenow={33}
+					aria-valuemin={0}
+					aria-valuemax={100}
+					aria-label="Form progress, step 1 of 3"
+				>
+				</div>
+			</div>
+			<div class="mt-4 flex gap-2" aria-label="Form steps">
+				{
+					steps.map((s) => (
+						<div
+							class:list={[
+								'contact-step-pip h-1 flex-1 rounded-full transition-colors duration-300',
+								s.id === 1 ? 'bg-[#0067FF]' : 'bg-slate-200 dark:bg-white/10',
+							]}
+							data-pip={s.id}
+						/>
+					))
+				}
+			</div>
+		</div>
+
+		<form id="contact-multistep-form" novalidate>
+			<div id="contact-panel-1" class="contact-panel space-y-5" data-panel="1">
+				<div>
+					<h3 class="font-[family-name:var(--font-display)] text-heading text-xl font-semibold">About you</h3>
+					<p class="text-body mt-1 text-sm">We&apos;ll only use this to respond to your inquiry.</p>
+				</div>
+				<div>
+					<label for="contact-name" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">
+						Full name <span class="text-[#0067FF]">*</span>
+					</label>
+					<input id="contact-name" name="name" type="text" required autocomplete="name" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-500 focus:border-[#0067FF] focus:ring-2 focus:ring-[#0067FF]/30 dark:border-white/15 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-[#0067FF]/40" placeholder="Jane Smith" />
+				</div>
+				<div>
+					<label for="contact-email" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">
+						Work email <span class="text-[#0067FF]">*</span>
+					</label>
+					<input
+						id="contact-email"
+						name="email"
+						type="email"
+						required
+						autocomplete="email"
+						inputmode="email"
+						class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-500 focus:border-[#0067FF] focus:ring-2 focus:ring-[#0067FF]/30 dark:border-white/15 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-[#0067FF]/40"
+						placeholder="you@company.com"
+					/>
+				</div>
+				<div>
+					<label for="contact-company" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">
+						Company <span class="font-normal text-slate-500 dark:text-slate-400">(optional)</span>
+					</label>
+					<input
+						id="contact-company"
+						name="company"
+						type="text"
+						autocomplete="organization"
+						class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-500 focus:border-[#0067FF] focus:ring-2 focus:ring-[#0067FF]/30 dark:border-white/15 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-[#0067FF]/40"
+						placeholder="Acme Inc."
+					/>
+				</div>
+			</div>
+
+			<div id="contact-panel-2" class="contact-panel hidden space-y-5" data-panel="2" hidden>
+				<div>
+					<h3 class="font-[family-name:var(--font-display)] text-heading text-xl font-semibold">Your goals</h3>
+					<p class="text-body mt-1 text-sm">Choose everything that applies—you can pick more than one.</p>
+				</div>
+				<div class="grid gap-3 sm:grid-cols-2" role="group" aria-label="Services of interest">
+					{
+						services.map((service) => (
+							<button
+								type="button"
+								class="contact-goal-btn rounded-xl border border-slate-200 bg-slate-50 p-4 text-left transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0067FF] dark:border-white/10 dark:bg-white/[0.03]"
+								data-goal={service.id}
+								aria-pressed="false"
+							>
+								<span class="flex items-start gap-3">
+									<span
+										class="contact-goal-check mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-slate-300 text-xs dark:border-white/25"
+										aria-hidden="true"
+									/>
+									<span>
+										<span class="text-heading block text-sm font-semibold">{service.label}</span>
+										<span class="text-body mt-1 block text-xs leading-relaxed">{service.description}</span>
+									</span>
+								</span>
+							</button>
+						))
+					}
+				</div>
+				<input type="hidden" name="goals" id="contact-goals-input" value="" />
+			</div>
+
+			<div id="contact-panel-3" class="contact-panel hidden space-y-5" data-panel="3" hidden>
+				<div>
+					<h3 class="font-[family-name:var(--font-display)] text-heading text-xl font-semibold">Project details</h3>
+					<p class="text-body mt-1 text-sm">A few sentences is enough—we&apos;ll ask follow-ups on our call.</p>
+				</div>
+				<div>
+					<label for="contact-timeline" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">
+						When do you want to start? <span class="text-[#0067FF]">*</span>
+					</label>
+					<select id="contact-timeline" name="timeline" required class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-500 focus:border-[#0067FF] focus:ring-2 focus:ring-[#0067FF]/30 dark:border-white/15 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-[#0067FF]/40">
+						<option value="" disabled selected>Select a timeline</option>
+						{timelines.map((t) => <option value={t}>{t}</option>)}
+					</select>
+				</div>
+				<div>
+					<label for="contact-budget" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">
+						Budget range <span class="font-normal text-slate-500 dark:text-slate-400">(optional)</span>
+					</label>
+					<select id="contact-budget" name="budget" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-500 focus:border-[#0067FF] focus:ring-2 focus:ring-[#0067FF]/30 dark:border-white/15 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-[#0067FF]/40">
+						<option value="">I&apos;m not sure yet</option>
+						{budgets.map((b) => <option value={b}>{b}</option>)}
+					</select>
+				</div>
+				<div>
+					<label for="contact-message" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">
+						What are you building? <span class="text-[#0067FF]">*</span>
+					</label>
+					<textarea
+						id="contact-message"
+						name="message"
+						required
+						rows={5}
+						class="w-full min-h-[120px] resize-y rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-500 focus:border-[#0067FF] focus:ring-2 focus:ring-[#0067FF]/30 dark:border-white/15 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-[#0067FF]/40"
+						placeholder="Example: We need a customer portal that connects to our ERP and shows order status in real time..."
+					/>
+				</div>
+			</div>
+
+			<p id="contact-hint" class="text-body mt-6 text-sm" role="status">
+				{steps[0].hint}
+			</p>
+
+			<div class="mt-8 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
+				<button
+					type="button"
+					id="contact-back"
+					class="hidden items-center justify-center rounded-full border border-slate-200 px-6 py-3 text-sm font-medium text-slate-700 transition-colors hover:border-slate-300 hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0067FF] dark:border-white/15 dark:text-slate-300 dark:hover:text-white"
+				>
+					Back
+				</button>
+				<p id="contact-step-note" class="text-center text-xs text-slate-500 sm:text-left dark:text-slate-400">
+					Step 1 of 3 — takes about 2 minutes
+				</p>
+				<button
+					type="button"
+					id="contact-continue"
+					class="btn-primary px-7 py-3 text-sm disabled:cursor-not-allowed disabled:opacity-40"
+					disabled
+				>
+					Continue
+				</button>
+				<button type="submit" id="contact-submit" class="btn-primary hidden px-7 py-3 text-sm disabled:cursor-not-allowed disabled:opacity-40" disabled>
+					Submit inquiry
+				</button>
+			</div>
+		</form>
+	</div>
+
+	<div id="contact-form-success" class="contact-form-success hidden py-6 text-center sm:py-8" role="status" hidden>
+		<div class="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-[#0067FF]/12 text-[#0067FF]">
+			<svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+				<path d="M20 6 9 17l-5-5"></path>
+			</svg>
+		</div>
+		<h3 class="font-[family-name:var(--font-display)] text-heading text-2xl font-semibold">Thanks—we received your inquiry</h3>
+		<p id="contact-success-copy" class="text-body mx-auto mt-3 max-w-md text-sm leading-relaxed"></p>
+		<div class="mx-auto mt-6 flex max-w-sm flex-col gap-3 sm:flex-row sm:justify-center">
+			<a id="contact-mailto-link" href={`mailto:${contactEmail}`} class="btn-primary px-6 py-3 text-sm"> Open email draft </a>
+			<button type="button" id="contact-reset" class="inline-flex items-center justify-center rounded-full border border-slate-200 px-6 py-3 text-sm font-medium text-slate-700 dark:border-white/15 dark:text-slate-300">
+				Send another
+			</button>
+		</div>
+		<a href="/" class="text-body mt-8 inline-flex text-sm font-medium transition-colors hover:text-[#0067FF] dark:hover:text-[#3d8fff]">
+			← Back to home
+		</a>
+	</div>
+</div>
+
+<script>
+	function initContactForm() {
+		const root = document.getElementById('contact-multistep');
+		if (!root) return;
+
+		const prev = root as HTMLElement & { _contactAbort?: AbortController };
+		prev._contactAbort?.abort();
+		const signal = (prev._contactAbort = new AbortController()).signal;
+
+		const contactEmail = root.dataset.contactEmail || 'contact@whiteraven.app';
+		const serviceLabels = JSON.parse(root.dataset.serviceLabels || '{}');
+		const steps = JSON.parse(root.dataset.steps || '[]');
+		const totalSteps = steps.length;
+
+		let step = 1;
+		const selectedGoals = new Set();
+
+		const activeEl = document.getElementById('contact-form-active')!;
+		const successEl = document.getElementById('contact-form-success')!;
+		const form = document.getElementById('contact-multistep-form') as HTMLFormElement;
+		const stepLabel = document.getElementById('contact-step-label')!;
+		const stepPercent = document.getElementById('contact-step-percent')!;
+		const progressBar = document.getElementById('contact-progress-bar')!;
+		const hintEl = document.getElementById('contact-hint')!;
+		const backBtn = document.getElementById('contact-back')!;
+		const continueBtn = document.getElementById('contact-continue')!;
+		const submitBtn = document.getElementById('contact-submit')!;
+		const stepNote = document.getElementById('contact-step-note')!;
+		const goalsInput = document.getElementById('contact-goals-input') as HTMLInputElement;
+		const successCopy = document.getElementById('contact-success-copy')!;
+		const mailtoLink = document.getElementById('contact-mailto-link') as HTMLAnchorElement;
+		const resetBtn = document.getElementById('contact-reset')!;
+
+		const nameInput = document.getElementById('contact-name') as HTMLInputElement;
+		const emailInput = document.getElementById('contact-email') as HTMLInputElement;
+		const timelineSelect = document.getElementById('contact-timeline') as HTMLSelectElement;
+		const messageInput = document.getElementById('contact-message') as HTMLTextAreaElement;
+
+		const panels = [1, 2, 3].map((n) => document.getElementById(`contact-panel-${n}`)!);
+		const pips = root.querySelectorAll<HTMLElement>('.contact-step-pip');
+
+		function isValidEmail(value: string) {
+			return /\S+@\S+\.\S+/.test(value);
+		}
+
+		function canProceed() {
+			if (step === 1) {
+				return nameInput.value.trim() !== '' && emailInput.value.trim() !== '' && isValidEmail(emailInput.value);
+			}
+			if (step === 2) return selectedGoals.size > 0;
+			if (step === 3) {
+				return timelineSelect.value !== '' && messageInput.value.trim() !== '';
+			}
+			return false;
+		}
+
+		function updateUI() {
+			const current = steps[step - 1];
+			const progress = Math.round((step / totalSteps) * 100);
+
+			stepLabel.textContent = `Step ${step} of ${totalSteps} · ${current.title}`;
+			stepPercent.textContent = `${progress}%`;
+			progressBar.style.width = `${(step / totalSteps) * 100}%`;
+			progressBar.setAttribute('aria-valuenow', String(progress));
+			progressBar.setAttribute('aria-label', `Form progress, step ${step} of ${totalSteps}`);
+			if (canProceed()) {
+				hintEl.classList.add('hidden');
+			} else {
+				hintEl.classList.remove('hidden');
+				hintEl.textContent = current.hint;
+			}
+
+			panels.forEach((panel, i) => {
+				const panelStep = i + 1;
+				const show = panelStep === step;
+				panel.classList.toggle('hidden', !show);
+				if (show) panel.removeAttribute('hidden');
+				else panel.setAttribute('hidden', '');
+			});
+
+			pips.forEach((pip) => {
+				const pipStep = Number(pip.dataset.pip);
+				if (pipStep <= step) {
+					pip.classList.remove('bg-slate-200', 'dark:bg-white/10');
+					pip.classList.add('bg-[#0067FF]');
+				} else {
+					pip.classList.add('bg-slate-200', 'dark:bg-white/10');
+					pip.classList.remove('bg-[#0067FF]');
+				}
+			});
+
+			const can = canProceed();
+			continueBtn.disabled = !can;
+			submitBtn.disabled = !can;
+
+			if (step > 1) {
+				backBtn.classList.remove('hidden');
+				backBtn.classList.add('inline-flex');
+				stepNote.classList.add('hidden');
+			} else {
+				backBtn.classList.add('hidden');
+				backBtn.classList.remove('inline-flex');
+				stepNote.classList.remove('hidden');
+			}
+
+			if (step < totalSteps) {
+				continueBtn.classList.remove('hidden');
+				submitBtn.classList.add('hidden');
+			} else {
+				continueBtn.classList.add('hidden');
+				submitBtn.classList.remove('hidden');
+			}
+		}
+
+		function formatInquiry() {
+			const company = (document.getElementById('contact-company') as HTMLInputElement).value.trim();
+			const budget = (document.getElementById('contact-budget') as HTMLSelectElement).value;
+			const goals = [...selectedGoals].map((id) => serviceLabels[id]).filter(Boolean).join(', ');
+
+			return [
+				`Name: ${nameInput.value.trim()}`,
+				`Email: ${emailInput.value.trim()}`,
+				`Company: ${company || '—'}`,
+				'',
+				`Services: ${goals}`,
+				`Timeline: ${timelineSelect.value}`,
+				`Budget: ${budget || 'Not specified'}`,
+				'',
+				'Project overview:',
+				messageInput.value.trim(),
+			].join('\n');
+		}
+
+		function buildMailto() {
+			const subject = encodeURIComponent(`Project inquiry from ${nameInput.value.trim()}`);
+			const body = encodeURIComponent(formatInquiry());
+			return `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+		}
+
+		root.querySelectorAll('.contact-goal-btn').forEach((btn) => {
+			btn.addEventListener(
+				'click',
+				() => {
+					const id = btn.dataset.goal;
+					if (!id) return;
+					const check = btn.querySelector('.contact-goal-check');
+					if (selectedGoals.has(id)) {
+						selectedGoals.delete(id);
+						btn.setAttribute('aria-pressed', 'false');
+						btn.classList.remove('border-[#0067FF]', 'bg-[#0067FF]/10');
+						check?.classList.remove('border-[#0067FF]', 'bg-[#0067FF]', 'text-white');
+						check?.classList.add('border-slate-300', 'dark:border-white/25');
+						if (check) check.textContent = '';
+					} else {
+						selectedGoals.add(id);
+						btn.setAttribute('aria-pressed', 'true');
+						btn.classList.add('border-[#0067FF]', 'bg-[#0067FF]/10');
+						check?.classList.remove('border-slate-300', 'dark:border-white/25');
+						check?.classList.add('border-[#0067FF]', 'bg-[#0067FF]', 'text-white');
+						if (check) check.textContent = '✓';
+					}
+					goalsInput.value = [...selectedGoals].join(',');
+					updateUI();
+				},
+				{ signal },
+			);
+		});
+
+		[nameInput, emailInput, timelineSelect, messageInput].forEach((el) => {
+			el.addEventListener('input', updateUI, { signal });
+			el.addEventListener('change', updateUI, { signal });
+		});
+
+		continueBtn.addEventListener(
+			'click',
+			() => {
+			if (!canProceed() || step >= totalSteps) return;
+			step += 1;
+			updateUI();
+			},
+			{ signal },
+		);
+
+		backBtn.addEventListener(
+			'click',
+			() => {
+			if (step > 1) {
+				step -= 1;
+				updateUI();
+			}
+			},
+			{ signal },
+		);
+
+		form.addEventListener(
+			'submit',
+			async (e) => {
+			e.preventDefault();
+			if (step < totalSteps) {
+				if (canProceed()) {
+					step += 1;
+					updateUI();
+				}
+				return;
+			}
+			if (!canProceed()) return;
+
+			const inquiryText = formatInquiry();
+			let copied = false;
+			try {
+				await navigator.clipboard.writeText(inquiryText);
+				copied = true;
+			} catch {
+				copied = false;
+			}
+
+			const mailto = buildMailto();
+			mailtoLink.href = mailto;
+			try {
+				const link = document.createElement('a');
+				link.href = mailto;
+				link.style.display = 'none';
+				document.body.appendChild(link);
+				link.click();
+				link.remove();
+			} catch {
+				/* mailto blocked */
+			}
+
+			successCopy.innerHTML = copied
+				? `Your answers were copied to the clipboard. If your email app opened, send the draft to <a href="mailto:${contactEmail}" class="font-medium text-[#0067FF] hover:underline dark:text-[#3d8fff]">${contactEmail}</a>. We reply within one business day.`
+				: `Email us at <a href="mailto:${contactEmail}" class="font-medium text-[#0067FF] hover:underline dark:text-[#3d8fff]">${contactEmail}</a> with your project details, or use the button below. We reply within one business day.`;
+
+			activeEl.classList.add('hidden');
+			activeEl.setAttribute('hidden', '');
+			successEl.classList.remove('hidden');
+			successEl.removeAttribute('hidden');
+			},
+			{ signal },
+		);
+
+		resetBtn.addEventListener(
+			'click',
+			() => {
+			step = 1;
+			selectedGoals.clear();
+			form.reset();
+			goalsInput.value = '';
+			root.querySelectorAll('.contact-goal-btn').forEach((btn) => {
+				btn.setAttribute('aria-pressed', 'false');
+				btn.classList.remove('border-[#0067FF]', 'bg-[#0067FF]/10');
+				const check = btn.querySelector('.contact-goal-check');
+				check?.classList.remove('border-[#0067FF]', 'bg-[#0067FF]', 'text-white');
+				check?.classList.add('border-slate-300', 'dark:border-white/25');
+				if (check) check.textContent = '';
+			});
+			successEl.classList.add('hidden');
+			successEl.setAttribute('hidden', '');
+			activeEl.classList.remove('hidden');
+			activeEl.removeAttribute('hidden');
+			updateUI();
+			},
+			{ signal },
+		);
+
+		updateUI();
+	}
+
+	document.addEventListener('astro:page-load', initContactForm);
+</script>

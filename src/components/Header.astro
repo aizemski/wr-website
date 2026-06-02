@@ -4,11 +4,7 @@ import HeaderLink from './HeaderLink.astro';
 import NavServicesMenu from './NavServicesMenu.astro';
 import ThemeToggle from './ThemeToggle.astro';
 
-const navLinks = [
-	{ href: '/', label: 'Home' },
-	{ href: '/blog', label: 'Blog' },
-	{ href: '/contact', label: 'Contact' },
-];
+const navLinks = [{ href: '/blog', label: 'Blog' }];
 
 const mobileServiceLinks = [
 	{ href: '/services/product-engineering', label: 'Product Engineering' },
@@ -43,7 +39,7 @@ const mobileServiceLinks = [
 			<div class="px-0.5">
 				<NavServicesMenu />
 			</div>
-			{navLinks.slice(1).map(({ href, label }) => (
+			{navLinks.map(({ href, label }) => (
 				<HeaderLink href={href}>{label}</HeaderLink>
 			))}
 		</div>
@@ -90,7 +86,7 @@ const mobileServiceLinks = [
 				</ul>
 			</div>
 
-			{navLinks.slice(1).map(({ href, label }) => (
+			{navLinks.map(({ href, label }) => (
 				<HeaderLink href={href} class="mobile-nav-link block w-full px-4 py-3">{label}</HeaderLink>
 			))}
 

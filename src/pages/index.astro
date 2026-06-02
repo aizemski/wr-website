@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { CORE_STACK } from '../consts';
+import { CORE_STACK_GROUPS } from '../consts';
 
 const trustLogos = [
 	{ name: 'Northline' },
@@ -101,7 +101,7 @@ const outcomes = [
 
 <BaseLayout
 	title="White Raven — Software That Drives Your Business Forward"
-	description="From engaging mobile apps to AI-powered internal tools, White Raven bridges complex technology and real business growth with React, Next.js, TypeScript, Python, AWS, LLMs, and Kubernetes."
+	description="From engaging mobile apps to AI-powered internal tools, White Raven bridges complex technology and real business growth. React, Next.js, NestJS, FastAPI, Django, AWS, LLMs, PyTorch, and Kubernetes."
 >
 	<div class="page-shell">
 		<!-- Hero -->
@@ -114,7 +114,7 @@ const outcomes = [
 				<div class="mx-auto max-w-4xl text-center">
 					<p class="badge-pill mb-8">
 						<span class="h-1.5 w-1.5 rounded-full bg-[#0067FF]" aria-hidden="true"></span>
-						{CORE_STACK.join(' · ')}
+						Custom software · Applied AI · Cloud
 					</p>
 
 					<h1
@@ -124,8 +124,8 @@ const outcomes = [
 					</h1>
 
 					<p class="text-body mx-auto mt-6 max-w-2xl text-base leading-relaxed sm:text-lg md:text-xl">
-						From engaging mobile apps to AI-powered internal tools, we bridge the gap between complex
-						technology and real business growth. Expertly crafted with React, Next.js, TypeScript, Python, AWS, LLMs, and Kubernetes.
+						From customer-facing apps to AI-powered internal tools, we turn ambitious ideas into software
+						your team adopts and your business can scale on.
 					</p>
 
 					<div
@@ -342,20 +342,39 @@ const outcomes = [
 		</section>
 
 		<!-- Stack -->
-		<section class="border-t border-theme py-16 sm:py-20">
-			<div class="page-container text-center">
-				<p class="text-sm font-medium text-muted">Core stack</p>
-				<ul class="mt-6 flex flex-wrap items-center justify-center gap-3" role="list">
+		<section class="border-t border-theme py-16 sm:py-20" aria-labelledby="core-stack-heading">
+			<div class="page-container">
+				<div class="mx-auto max-w-2xl text-center">
+					<h2
+						id="core-stack-heading"
+						class="font-[family-name:var(--font-display)] text-heading text-2xl font-semibold tracking-tight sm:text-3xl"
+					>
+						Core stack
+					</h2>
+					<p class="text-body mt-3 text-sm leading-relaxed sm:text-base">
+						Proven tools across web, cloud, and AI so your product ships fast and stays maintainable.
+					</p>
+				</div>
+				<div class="mx-auto mt-12 max-w-4xl space-y-10">
 					{
-						CORE_STACK.map((tech) => (
-							<li>
-								<span class="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200">
-									{tech}
-								</span>
-							</li>
+						CORE_STACK_GROUPS.map((group) => (
+							<div>
+								<p class="mb-4 text-center text-xs font-medium uppercase tracking-[0.18em] text-muted">
+									{group.label}
+								</p>
+								<ul class="flex flex-wrap items-center justify-center gap-3" role="list">
+									{group.items.map((tech) => (
+										<li>
+											<span class="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200">
+												{tech}
+											</span>
+										</li>
+									))}
+								</ul>
+							</div>
 						))
 					}
-				</ul>
+				</div>
 			</div>
 		</section>
 
